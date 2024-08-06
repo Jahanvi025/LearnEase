@@ -1,35 +1,38 @@
-const mongoose = require('mongoose');
-const {Schema} = require("mongoose");
+import mongoose, {Schema} from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    userName:{
+    userName: {
         type: String,
         required: true,
         unique: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
         required: true
     },
-    role:{
+    role: {
         type: String,
-        enum:['Admin' , 'Student'],
+        enum: ['Admin', 'Student'],
         required: true
     },
-    courses:[{
+    verified: {
+        type: Boolean,
+        default: false
+    },
+    courses: [{
         type: Schema.Types.ObjectId,
         ref: 'Course',
     }],
-    created_at:{
+    created_at: {
         type: Date,
         default: Date.now
     },
-    updated_at:{
+    updated_at: {
         type: Date,
         default: Date.now
     }
