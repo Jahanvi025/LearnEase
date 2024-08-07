@@ -103,7 +103,7 @@ const Container = () => {
                 </form>
                 <button
                   type='submit'
-                  className="ml-1 w-40 px-6 py-2 bg-[black] text-white rounded-full active:bg-blue-700 transition-all duration-300 shadow-xl"
+                  className="ml-1 w-40 px-6 py-2 bg-black text-white rounded-full active:bg-dark transition-all duration-300 shadow-xl"
                   onClick={handleSearch}
                 >
                   Search
