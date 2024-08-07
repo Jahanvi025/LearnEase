@@ -15,7 +15,7 @@ app.use('/', routes);
 
 
 app.get('/getData', (req, res) => {
-   res.send("API is running..");
+  
 });
 
 
