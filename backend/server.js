@@ -9,7 +9,7 @@ env.config();
 app.use(cors());
 
 app.get('/getData', (req, res) => {
-   res.send("API is running..");
+  
 });
 
 const PORT = process.env.PORT || 5000;
