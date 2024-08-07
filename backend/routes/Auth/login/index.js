@@ -10,13 +10,17 @@ Route: /login
 Des: Login with email and password
 Params: None
 */
-router.post('/login' ,async (req, res) => {
+router.post('/' ,async (req, res) => {
   const {email, password} = req.body;
   try {
       const existingUser = await User.findOne({email: email});
       if (!existingUser) {
           return res.status(400).json({message: "User does not exist"});
       }
+      if (!existingUser.verified) {
+          return res.status(400).json({message: "User not verified"});
+      }
+
       const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
       if (!isPasswordCorrect) {
           return res.status(400).json({message: "Invalid credentials"});
