@@ -8,3 +8,4 @@ router.use("/register", register);
 router.use("/login", login);
 
 export default router;
+

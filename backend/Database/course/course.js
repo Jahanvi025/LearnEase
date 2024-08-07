@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 const courseSchema = new Schema({
     title: {
       type: String,
@@ -27,5 +27,5 @@ const courseSchema = new Schema({
   });
   
   const Course = mongoose.model('Course', courseSchema);
-  module.exports = Course;
+  export default Course;
   
