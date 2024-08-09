@@ -48,7 +48,7 @@ router.post('/', async ( req, res ) => {
             from: process.env.EMAIL,
             to: email,
             subject: "OTP for account verification",
-            html: `<p> Enter <b>${otp}</b> in the app to verify your email address and complete the signUp </p>`
+            html: `<p>Enter <b>${otp}</b> in the app to verify your email address and complete the signUp </p>`
         }
         await transporter.sendMail(mailOption);
 
