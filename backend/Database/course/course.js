@@ -12,6 +12,10 @@ const courseSchema = new Schema({
       type: String,
       required: true,
     },
+    price:{
+      type: String,
+      default: "Free",
+    },
     tags: [String],
     students: [{
       type: Schema.Types.ObjectId,
