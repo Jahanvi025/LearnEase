@@ -1,22 +1,32 @@
-import React, { Children } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import HomePageLayout from '../layout/HomePage.layout'
-const HomeHoc = ({component: Component,path,...rest}) => {
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomePageLayout from '../layout/HomePage.layout';
+import SignIn from '../pages/Auth/SignIn'; // Adjust the path as needed
+
+const HomeHoc = ({ component: Component, path, ...rest }) => {
   return (
     <>
       <Routes>
-        <Route {...rest}
+        <Route
+          {...rest}
           path={path}
           element={
             <HomePageLayout>
-              <Component/>
+              <Component />
             </HomePageLayout>
           }
-          />
+        />
+        <Route
+          path="/signin"
+          element={
+            <HomePageLayout>
+              <SignIn isOpen={true} setIsOpen={() => {}} /> {/* Adjust props as needed */}
+            </HomePageLayout>
+          }
+        />
       </Routes>
-    </>      
-  
-  )
-}
+    </>
+  );
+};
 
-export default HomeHoc
+export default HomeHoc;
