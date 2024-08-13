@@ -1,65 +1,57 @@
-import React, {useState} from 'react';
-import {RxHamburgerMenu} from "react-icons/rx"
-import {FaUserCircle} from "react-icons/fa"
-import logo from "../Assets/images/infinity.png";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import logo from '../Assets/images/infinity (1).png';
 
-function Navbar() {
-    //const logo = require('../../assets/Image/LOGO.png')
-    const[user, setUser] = useState({
-    })
-    return (
-        <>
-            <div className='lg:inline container mx-auto items-center  '>
-                <nav className=" sticky top-0  z-10 flex bg-white w-full items-center justify-around  gap-4 p-4 h-16 ">
-                    <div className="items-center flex">
-                        <img src={logo} alt="Logo" className="w-12"/>
-                        <a href="/" className="text-gray-950 p-3">Three Jobs</a>
-                    </div>
-                    <div>
-                        <a href="/login" className="text-gray-950 p-4 transition-all delay-150 hover:text-xl">Home</a>
-                        <a href="/signup" className="text-gray-950 p-4 transition-all delay-150 hover:text-xl">Browser
-                            job </a>
-                        <div className="group inline-block relative">
-                            <a href="/profile"
-                               className="text-gray-950 p-4 transition-all delay-150 hover:text-xl ">Companies</a>
-                            <div
-                                className="  absolute mt-2 w-48 rounded-md shadow-xl py-1 bg-white text-black z-10 invisible group-hover:visible">
-                                <a href="/" className="block px-4 py-2 text-sm hover:bg-gray-100">Company 1</a>
-                                <a href="/" className="block px-4 py-2 text-sm hover:bg-gray-100">Company 2</a>
-                                <a href="/" className="block px-4 py-2 text-sm hover:bg-gray-100">Company 3</a>
-                            </div>
-                        </div>
-                        {user?.userName ? (
-                            <div className="inline-block ">
-                                <div
-                                    className="flex bg-transparent border-2 hover:bg-white h-10 transition ease-out delay-150 hover:-translate-y-1 hover:scale-110   text-gray-950 hover:text-black py-2 px-4 rounded-3xl w-24">
-                                    <RxHamburgerMenu className='h-full font-bold text-5xl '/>
-                                    <FaUserCircle className=' h-full font-bold text-5xl '/>
-                                </div>
-                            </div>
-                        ) : (
-                            <>
-                                <div className="inline-block relative mx-3">
-                                    <button
-                                        className="bg-transparent border-2 hover:bg-white h-10   text-gray-950 hover:text-black py-2 px-4 rounded-3xl w-24">
-                                        Log In
-                                    </button>
-                                </div>
-                                <div className="inline-block relative">
-                                    <button
-                                        className="bg-transparent border-2 hover:bg-white h-10   text-gray-950 hover:text-black py-2 px-4 rounded-3xl w-24">
-                                        Sign Up
-                                    </button>
-                                </div>
-                            </>
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [menu, setMenu] = useState("Home");
 
-                        )}
+  return (
+    <div>
+      <nav className="w-[100%] h-24 flex flex-row justify-around p-2 py-4 gap-14">
+        <div className="flex flex-row gap-2 pt-2">
+          <img className="h-12 w-12" src={logo} alt="logo" />
+          <h1 className="text-xl pt-2">LearnHub</h1>
+        </div>
 
-                    </div>
-                </nav>
-            </div>
+        <div className="flex flex-row justify-center gap-3 pt-4 font-sans">
+          <Link 
+            to="/" 
+            className={`link-font text-center w-20 ${menu === "Home" ? "activelink" : ""}`} 
+            onClick={() => setMenu("Home")}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/about" 
+            className={`link-font text-center w-20 ${menu === "Courses" ? "activelink" : ""}`} 
+            onClick={() => setMenu("Courses")}
+          >
+            Courses
+          </Link>
+          <Link 
+            to="/contact" 
+            className={`link-font text-center w-20 ${menu === "Services" ? "activelink" : ""}`} 
+            onClick={() => setMenu("Services")}
+          >
+            Services
+          </Link>
+          <Link 
+            to="/pricing" 
+            className={`link-font text-center w-20 ${menu === "Pricing" ? "activelink" : ""}`} 
+            onClick={() => setMenu("Pricing")}
+          >
+            Pricing
+          </Link>
+        </div>
 
-        </>
-    );
-}
+        <div className="flex flex-row justify-center gap-2 pt-2 font-sans">
+          <button className=" text-center link-font w-28 h-10 border-solid border-[3px] border-neutral-400 rounded-xl" onClick={() => navigate('/login')}>Login</button>
+          <button className="link-font text-center mb-11 text-white backgroundgrad w-28 h-10 hover:bg-gray-700 rounded-xl" onClick={() => navigate('/signup')}>Sign Up</button>
+        </div>
+      </nav>
+    </div>
+  );
+};
+
 export default Navbar;
