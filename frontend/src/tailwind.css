@@ -21,8 +21,13 @@
   
 }
 .backgroundgrad{
-	background: linear-gradient(to right, #ff8c00, #ffd900);
-    
+	background: linear-gradient(to right, #ff8c00, #ffd900);   
+}
+.background2{
+	background: linear-gradient(to right,  #FFA500 0%,  #ff5415 35%,  #FFFF00 100%
+);
+    border-top-left-radius: 100%;
+	border-bottom-left-radius: 100%;
 }
 .custom-underline-hover::after {
   content: '';

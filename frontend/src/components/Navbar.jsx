@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="w-[100%] h-24 flex flex-row justify-around p-2 py-4 gap-14">
+      <nav className="w-full h-24 flex flex-row justify-around p-2 py-4 gap-14">
         <div className="flex flex-row gap-2 pt-2">
           <img className="h-12 w-12" src={logo} alt="logo" />
           <h1 className="text-xl pt-2">LearnHub</h1>
