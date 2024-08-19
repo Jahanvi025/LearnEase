@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 const contentSchema = new Schema({
     course: {
       type: Schema.Types.ObjectId,
@@ -24,5 +24,5 @@ const contentSchema = new Schema({
   });
   
   const Content = mongoose.model('Content', contentSchema);
-  module.exports = Content;
+  export default Content;
   
