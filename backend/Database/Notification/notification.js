@@ -6,6 +6,10 @@ const notificationSchema = new Schema({
         ref: 'User',
         required: true,
     },
+    course: {
+        type: Schema.Types.ObjectId,
+        ref: 'Course',
+    },
     message: {
         type: String,
         required: true,
@@ -20,5 +24,5 @@ const notificationSchema = new Schema({
     },
 });
 
-export const Notification = mongoose.model('Notification', notificationSchema);
-
+const Notification = mongoose.model('Notification', notificationSchema);
+export default Notification;
