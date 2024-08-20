@@ -5,6 +5,10 @@ const assignmentSchema = new Schema({
       ref: 'Course',
       required: true,
     },
+    gradedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     title: {
       type: String,
       required: true,
