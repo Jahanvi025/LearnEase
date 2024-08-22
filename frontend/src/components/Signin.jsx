@@ -94,11 +94,11 @@ const Signin = () => {
                     </button>
                 </form>
 
-                {error && <p className="text-red-500 mt-4">{error}</p>}
-                {success && <p className="text-green-500 mt-4">{success}</p>}
-            </div>
-        </div>
-    );
+      {error && <p className="text-red-500 mt-4">{error}</p>}
+      {success && <p className="text-green-500 mt-4">{success}</p>}
+    </div>
+  </div>
+);
 }
 
 export default Signin;
