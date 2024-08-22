@@ -9,9 +9,6 @@ dotenv.config();
 app.use(express.json());
 
 
-app.use(express.json());
-
-
 // Enable CORS for all routes
 app.use(cors());
 app.use('/', routes);
