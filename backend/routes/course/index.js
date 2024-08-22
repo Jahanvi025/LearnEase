@@ -134,6 +134,7 @@ Des: Enroll in a course
 Params: id
  */
 
+
 router.post('/:id/enroll', auth, async ( req, res ) => {
     try {
         const {id} = req.params;
@@ -150,7 +151,6 @@ router.post('/:id/enroll', auth, async ( req, res ) => {
             await courseFound.save();
             user.courses.push(courseFound._id);
             await user.save();
-
         } else {
             return res.status(400).json({message: "User already enrolled in this course"});
         }
@@ -173,6 +173,7 @@ Route /course/search
 Des: Search for a course
 Params: query
  */
+
 
 router.get('/search', async ( req, res ) => {
     try {

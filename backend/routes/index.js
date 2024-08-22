@@ -11,5 +11,4 @@ router.use('/course' , course);
 router.use('/sendSms' , sendSms);
 router.use('/content' , content);
 router.use('/user' , user);
-
 export default router;
