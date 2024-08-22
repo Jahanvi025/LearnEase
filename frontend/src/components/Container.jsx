@@ -1,10 +1,11 @@
 import React from 'react';
 import laptopimg from '../Assets/images/3d-rendering-laptop.png'
-import CourseCategory from './CourseCategory';
+
 const Container = () => {
   return (
     <>
-      <div className="custom-shape-divider-top-1723480175 relative">
+
+      <div className=" custom-shape-divider-top-1723480175 relative">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +40,7 @@ const Container = () => {
           <li></li>
         </ul>
 
-        <div className=' flex flex-col justify-center align-middle items-center'>
+        <div className='  flex flex-col justify-center align-middle items-center'>
           <div className="absolute right-0 bottom-8 px-[104px] pt-10 flex flex-row justify-between align-center gap-48 z-10" style={{ transform: 'rotate(-180deg)' }}>
             <div className='pt-10'>
               <span className="w-20 h-2 z-10 bg-white dark:bg-white mb-12 absolute"></span>
@@ -118,7 +119,7 @@ const Container = () => {
           </div>
         </div>
       </div>
-      <CourseCategory />
+
     </>
   );
 };
