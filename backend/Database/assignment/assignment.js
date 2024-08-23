@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 const assignmentSchema = new Schema({
     course: {
       type: Schema.Types.ObjectId,
@@ -40,5 +40,5 @@ const assignmentSchema = new Schema({
   });
   
   const Assignment = mongoose.model('Assignment', assignmentSchema);
-  module.exports = Assignment;
+  export default Assignment;
   
