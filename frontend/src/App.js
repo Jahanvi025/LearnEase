@@ -29,6 +29,7 @@ function App() {
             <HomeHoc exact component={SignUp} path='/signUp'/>
             <HomeHoc exact component={Courses} path="/Courses"/>
             <HomeHoc exact component={VerifyOtp} path="/verify-otp"/>
+            
         </>
     );
 }
