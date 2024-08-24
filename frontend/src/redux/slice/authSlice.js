@@ -21,9 +21,9 @@ export const signUp = createAsyncThunk('auth/register', async ( userData, thunkA
     }
 })
 
-export const verifyOtp = createAsyncThunk('auth/verifyOtp', async ( otp, thunkApi ) => {
+export const verifyOtp = createAsyncThunk('auth/verifyOtp', async ( {email,otp}, thunkApi ) => {
     try {
-        const response = await axios.post('http://localhost:5000/auth/register/verify', otp);
+        const response = await axios.post('http://localhost:5000/auth/register/verify', {email, otp});
         Cookies.set('token', response.data.token);
         return response.data;
     } catch (err) {
