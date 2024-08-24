@@ -2,6 +2,7 @@ node_modules
 node_modules/
 frontend/node_modules/
 /node_modules
+backend/config/olms-9f450-firebase-adminsdk-b3gvs-092dc63578.json
 
 # Ignore node_modules directory
 node_modules/
