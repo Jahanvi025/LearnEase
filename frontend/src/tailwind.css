@@ -42,6 +42,7 @@
   transition: transform 0.5s ease;
 }
 
+
 .custom-underline-hover:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
@@ -218,16 +219,18 @@
 	overflow: hidden;
 	line-height: 0;
 	transform: rotate(180deg); /* Flip the shape upside down */
-  }
-  
-  .custom-shape-divider-top-1723480175 svg {
-	position: relative;
-	display: block;
-	width: 115%; /* Set width to 100% */
-	height: 122%; /* Set height to fill the container */
-  }
-  
-  .custom-shape-divider-top-1723480175 .shape-fill {
-	fill: url(#gradient); /* Apply the gradient fill */
-  }
-  
+}
+
+.custom-shape-divider-top-1723480175 svg {
+position: relative;
+display: block;
+width: 115%; /* Set width to 100% */
+height: 122%; /* Set height to fill the container */
+}
+
+.custom-shape-divider-top-1723480175 .shape-fill {
+fill: url(#gradient); /* Apply the gradient fill */
+}
+.borderradius{
+	border-radius: 47% 53% 100% 0% / 0% 0% 100% 100%  ;
+}
