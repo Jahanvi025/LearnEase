@@ -38,7 +38,8 @@ const authSlice = createSlice({
         token: Cookies.get('token') || null,
         loading: false,
         error: null,
-        isAuthenticated: !!Cookies.get('token')
+        isAuthenticated: !!Cookies.get('token'),
+        getReady: false
     },
     reducers: {
         logout: ( state ) => {
@@ -66,14 +67,17 @@ const authSlice = createSlice({
             .addCase(signUp.pending, ( state ) => {
                 state.loading = true;
                 state.error = null;
+                state.getReady = false;
             })
             .addCase(signUp.fulfilled, ( state, action ) => {
                 state.loading = false;
                 state.user = action.payload.user;
+                state.getReady = true;
             })
             .addCase(signUp.rejected, ( state, action ) => {
                 state.loading = false;
                 state.error = action.payload;
+                state.getReady = false;
             })
             .addCase(verifyOtp.pending, ( state ) => {
                 state.loading = true;
