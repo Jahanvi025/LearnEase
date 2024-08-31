@@ -9,11 +9,16 @@ import Signin from './components/Auth/Signin.jsx';
 import Courses from './components/Courses.jsx';
 import SignUp from './components/Auth/SignUp.jsx';
 import VerifyOtp from "./components/Auth/VerifyOtp";
+import AdminAuth from "./components/Admin/Auth/AdminAuth";
+import {Route, Routes} from "react-router-dom";
+import AdminHOC from "./HOC/Admin.HOC";
+import DashboardPage from "./pages/DashboardPage";
 
 //Redux
 import {useDispatch} from "react-redux";
 import Cookies from "js-cookie";
 import {fetchUser} from "./redux/slice/userSlice";
+
 
 function App() {
     const dispatch = useDispatch();
@@ -29,7 +34,10 @@ function App() {
             <HomeHoc exact component={SignUp} path='/signUp'/>
             <HomeHoc exact component={Courses} path="/Courses"/>
             <HomeHoc exact component={VerifyOtp} path="/verify-otp"/>
-            
+            <Routes>
+                <Route path="/Learn-Hub-admin" element={<AdminAuth/>}/>
+            </Routes>
+            <AdminHOC exact component={DashboardPage} path="/admin/dashboard"/>
         </>
     );
 }
