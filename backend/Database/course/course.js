@@ -24,6 +24,9 @@ const courseSchema = new Schema({
     syllabus: [{
       type: String,
     }],
+    content: [{
+        type: String,
+        }],
     createdAt: {
       type: Date,
       default: Date.now,
