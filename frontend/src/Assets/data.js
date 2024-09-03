@@ -1,5 +1,5 @@
 const courses = {
-javascript: [
+  webDevelopment : [
     {
     title: "JavaScript for Beginners",
     description: "Learn JavaScript from scratch.",
@@ -11,14 +11,14 @@ javascript: [
     videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" title="JavaScript For Beginners Complete Course" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
     },
     {
-    title: "The Complete JavaScript Course 2024: From Zero to Expert!",
-    description: "The modern JavaScript course for everyone! Master JavaScript with projects, challenges and theory.",
-    rating: { value: 4.7, max: 5, reviews: 211010 },
-    duration: { hours: 68.5, lectures: 321 },
+    title: "React - The Complete Guide 2024 (incl. Next.js, Redux)",
+    description: "Dive in and learn React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and way more!",
+    rating: { value: 4.6, max: 5, reviews: 215995 },
+    duration: { hours: 68.5, lectures: 696 },
     level: "All Levels",
-    price: { current: "₹4,099", original: null },
-    instructors: ["Jonas Schmedtmann"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" title="The Complete JavaScript Course 2024: From Zero to Expert!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    price: { current: "₹3,699", original: null },
+    instructors: ["Academind by Maximilian Schwarzmüller", "Maximilian Schwarzmüller"],
+    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_6" title="React - The Complete Guide 2024 (incl. Next.js, Redux)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
     },
     {
     title: "The Complete Full-Stack JavaScript Course",
@@ -31,90 +31,6 @@ javascript: [
     videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_3" title="The Complete Full-Stack JavaScript Course" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
     },
     {
-    title: "Master JavaScript from Basics to Advanced",
-    description: "A perfect JavaScript course for all those who want to learn and master JavaScript programming skills right from scratch.",
-    rating: { value: 4.5, max: 5, reviews: 4471 },
-    duration: { hours: 10, lectures: 87 },
-    level: "Beginner",
-    price: { current: "₹2,299", original: null },
-    instructors: ["EdYoda for Business", "Qaifi Khan"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_4" title="Master JavaScript from Basics to Advanced" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "Complete Javascript & jQuery Course with Bonus Vue JS Intro",
-    description: "Learn Javascript, jQuery and Ajax from the start + Bonus Intro to Vue JS 3. Incudes complete written course material!",
-    rating: { value: 4.4, max: 5, reviews: 2670 },
-    duration: { hours: 17, lectures: 98 },
-    level: "All Levels",
-    price: { current: "₹2,899", original: null },
-    instructors: ["Ivan Lourenço Gomes", "Learn IT University", "Andrii Piatakha"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_5" title="Complete Javascript & jQuery Course with Bonus Vue JS Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    }
-],
-react: [
-    {
-    title: "React - The Complete Guide 2024 (incl. Next.js, Redux)",
-    description: "Dive in and learn React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and way more!",
-    rating: { value: 4.6, max: 5, reviews: 215995 },
-    duration: { hours: 68.5, lectures: 696 },
-    level: "All Levels",
-    price: { current: "₹3,699", original: null },
-    instructors: ["Academind by Maximilian Schwarzmüller", "Maximilian Schwarzmüller"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_6" title="React - The Complete Guide 2024 (incl. Next.js, Redux)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "Modern React with Redux [2024 Update]",
-    description: "Master React and Redux. Apply modern design patterns to build apps with React Router, TailwindCSS, Context, and Hooks!",
-    rating: { value: 4.7, max: 5, reviews: 87084 },
-    duration: { hours: 76, lectures: 685 },
-    level: "All Levels",
-    price: { current: "₹4,099", original: null },
-    instructors: ["Stephen Grider"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_7" title="Modern React with Redux [2024 Update]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "React JS- Complete Guide for Frontend Web Development",
-    description: "Become an expert React JS Developer. Learn HTML, CSS, JavaScript, ES6, React JS and jQuery.",
-    rating: { value: 4.4, max: 5, reviews: 5462 },
-    duration: { hours: 22, lectures: 202 },
-    level: "All Levels",
-    price: { current: "₹2,699", original: null },
-    instructors: ["EdYoda for Business", "Qaifi Khan", "Mavludin Abdulkadirov"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_8" title="React JS- Complete Guide for Frontend Web Development" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "Complete React Developer (w/ Redux, Hooks, GraphQL)",
-    description: "Updated! Become a Senior React Developer. Build a massive E-commerce app with Redux, Hooks, GraphQL, Stripe, Firebase",
-    rating: { value: 4.6, max: 5, reviews: 28415 },
-    duration: { hours: 42.5, lectures: 346 },
-    level: "All Levels",
-    price: { current: "₹4,099", original: null },
-    instructors: ["Andrei Neagoie", "Yihua Zhang"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_9" title="Complete React Developer (w/ Redux, Hooks, GraphQL)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "Next.js Projects - 5 NextJS 14 projects (Instagram, Google.)",
-    description: "Next.js 14 (reactjs framework) Projects. 5 NextJS 14 projects. IMDB, Instagram, X-Twitter, Google clone using Next js 14",
-    rating: { value: 4.4, max: 5, reviews: 805 },
-    duration: { hours: 54, lectures: 77 },
-    level: "All Levels",
-    price: { current: "₹3,299", original: null },
-    instructors: ["Dr. Sahand Ghavidel"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_10" title="Next.js Projects - 5 NextJS 14 projects (Instagram, Google.)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    }
-],
-html: [
-    {
-    title: "HTML and CSS for Beginners - Build a Website & Launch ONLINE",
-    description: "HTML and CSS for Beginners course will give you all the knowledge you need to master HTML and CSS easily and quickly.",
-    rating: { value: 4.5, max: 5, reviews: 36420 },
-    duration: { hours: 6, lectures: 49 },
-    level: "All Levels",
-    price: { current: "₹3,699", original: null },
-    instructors: ["Edwin Diaz", "Coding Faculty Solutions"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_11" title="HTML and CSS for Beginners - Build a Website & Launch ONLINE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
     title: "Build Responsive Real-World Websites with HTML and CSS",
     description: "Learn modern HTML5, CSS3 and web design by building a stunning website for your portfolio! Includes flexbox and CSS Grid",
     rating: { value: 4.7, max: 5, reviews: 108318 },
@@ -123,58 +39,6 @@ html: [
     price: { current: "₹4,099", original: null },
     instructors: ["Jonas Schmedtmann"],
     videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_12" title="Build Responsive Real-World Websites with HTML and CSS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "HTML, CSS, & JavaScript - Certification Course for Beginners",
-    description: "A Comprehensive Guide for Beginners interested in learning HTML, CSS, & JavaScript to Build Interactive Web Pages.",
-    rating: { value: 4.3, max: 5, reviews: 9297 },
-    duration: { hours: 5.5, lectures: 113 },
-    level: "Beginner",
-    price: { current: "₹2,499", original: null },
-    instructors: ["YouAccel Training"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_13" title="HTML, CSS, & JavaScript - Certification Course for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "HTML5 and CSS3 Fundamentals",
-    description: "Build your very own website with HTML5 from scratch using HTML5 and CSS3 - designed for complete beginners",
-    rating: { value: 4.3, max: 5, reviews: 19687 },
-    duration: { hours: 5, lectures: 35 },
-    level: "Beginner",
-    price: { current: "₹799", original: null },
-    instructors: ["Stone River eLearning"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_14" title="HTML5 and CSS3 Fundamentals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    }
-],
-css: [
-    {
-    title: "CSS3 and Bootstrap for Absolute Beginners : 4 courses in 1",
-    description: "Learn CSS3, Bootstrap from Scratch using step by step process",
-    rating: { value: 4.3, max: 5, reviews: 1769 },
-    duration: { hours: 3, lectures: 40 },
-    level: "All Levels",
-    price: { current: "₹799", original: null },
-    instructors: ["Creative Online School"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_15" title="CSS3 and Bootstrap for Absolute Beginners : 4 courses in 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "Advanced CSS and Sass: Flexbox, Grid, Animations",
-    description: "Learn CSS and Sass to create stunning and modern web layouts using Flexbox, Grid, and Animations.",
-    rating: { value: 4.6, max: 5, reviews: 34281 },
-    duration: { hours: 35, lectures: 195 },
-    level: "All Levels",
-    price: { current: "₹2,999", original: null },
-    instructors: ["Jonas Schmedtmann"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_16" title="Advanced CSS and Sass: Flexbox, Grid, Animations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    },
-    {
-    title: "CSS Masterclass: Advanced Techniques",
-    description: "Become a CSS master with advanced techniques including transitions, animations, and responsive design.",
-    rating: { value: 4.7, max: 5, reviews: 19850 },
-    duration: { hours: 25, lectures: 132 },
-    level: "Intermediate",
-    price: { current: "₹2,499", original: null },
-    instructors: ["Creative Tim"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_17" title="CSS Masterclass: Advanced Techniques" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
     },
     {
     title: "Responsive Web Design with CSS Grid and Flexbox",
@@ -186,15 +50,161 @@ css: [
     instructors: ["Traversy Media"],
     videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_18" title="Responsive Web Design with CSS Grid and Flexbox" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
     },
+],
+leadership: [
     {
-    title: "CSS and Sass: Create Modern Responsive Websites",
-    description: "Master CSS and Sass to build modern, responsive websites with ease.",
-    rating: { value: 4.5, max: 5, reviews: 15873 },
-    duration: { hours: 28, lectures: 100 },
-    level: "All Levels",
-    price: { current: "₹2,299", original: null },
-    instructors: ["Academind"],
-    videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_19" title="CSS and Sass: Create Modern Responsive Websites" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+      title: "Dare to Lead: How to Become a Next Generation Leader",
+      description: "Become a Next Generation Leader, Achieve More and Create Impact.",
+      rating: { value: 4.3, max: 5, reviews: 584 },
+      duration: { hours: 2, lectures: 44 },
+      level: "All Levels",
+      price: { current: "₹1,999", original: null },
+      instructors: ["Susmita Dutta", "Ash Akshay Goel"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" title="Dare to Lead: How to Become a Next Generation Leader" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Leadership: Practical Leadership Skills",
+      description: "Master leadership skills and leadership techniques with this highly practical advice and training.",
+      rating: { value: 4.7, max: 5, reviews: 84365 },
+      duration: { hours: 3.5, lectures: 49 },
+      level: "All Levels",
+      price: { current: "₹3,099", original: null },
+      instructors: ["Chris Croft"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" title="Leadership: Practical Leadership Skills" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Transformational Leadership: Leadership Development Training",
+      description: "Discover the hidden secrets of the world's best leaders with this leadership development and skills course.",
+      rating: { value: 4.6, max: 5, reviews: 517 },
+      duration: { hours: 5, lectures: 29 },
+      level: "All Levels",
+      price: { current: "₹2,499", original: null },
+      instructors: ["Prof. Paul Cline, Ed.D", "Sandor Kiss"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_3" title="Transformational Leadership: Leadership Development Training" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Leadership: You Can Speak Like a Leader",
+      description: "Project authority and confidence, and demonstrate leadership every time you speak.",
+      rating: { value: 4.5, max: 5, reviews: 2507 },
+      duration: { hours: 29.5, lectures: 605 },
+      level: "All Levels",
+      price: { current: "₹3,699", original: null },
+      instructors: ["TJ Walker", "Media Training Worldwide Digital"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_4" title="Leadership: You Can Speak Like a Leader" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Emotional Intelligence for Leadership",
+      description: "Learn how to lead with emotional intelligence, enhance self-awareness, and improve team dynamics.",
+      rating: { value: 4.8, max: 5, reviews: 3456 },
+      duration: { hours: 4, lectures: 32 },
+      level: "All Levels",
+      price: { current: "₹2,999", original: null },
+      instructors: ["Robin Hills"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_5" title="Emotional Intelligence for Leadership" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    }
+],
+dataScience: [
+    {
+      title: "The Data Science Course: Complete Data Science Bootcamp 2024",
+      description: "Complete Data Science Training: Math, Statistics, Python, Advanced Statistics in Python, Machine and Deep Learning.",
+      rating: { value: 4.6, max: 5, reviews: 143939 },
+      duration: { hours: 32, lectures: 520 },
+      level: "All Levels",
+      price: { current: "₹3,699", original: null },
+      instructors: ["365 Careers"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" title="The Data Science Course: Complete Data Science Bootcamp 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Python for Data Science and Machine Learning Bootcamp",
+      description: "Learn how to use NumPy, Pandas, Seaborn, Matplotlib, Plotly, Scikit-Learn, Machine Learning, Tensorflow, and more!",
+      rating: { value: 4.6, max: 5, reviews: 145484 },
+      duration: { hours: 25, lectures: 165 },
+      level: "All Levels",
+      price: { current: "₹4,499", original: null },
+      instructors: ["Jose Portilla", "Pierian Training"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" title="Python for Data Science and Machine Learning Bootcamp" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "R Programming A-Z™: R For Data Science With Real Exercises!",
+      description: "Learn Programming In R And R Studio. Data Analytics, Data Science, Statistical Analysis, Packages, Functions, GGPlot2.",
+      rating: { value: 4.6, max: 5, reviews: 54473 },
+      duration: { hours: 10.5, lectures: 80 },
+      level: "All Levels",
+      price: { current: "₹4,499", original: null },
+      instructors: ["Kirill Eremenko", "SuperDataScience Team", "Ligency Team"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_3" title="R Programming A-Z™: R For Data Science With Real Exercises!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Data Science A-Z: Hands-On Exercises & ChatGPT Prize [2024]",
+      description: "Learn Data Science step by step through real Analytics examples. Data Mining, Modeling, Tableau Visualization and more!",
+      rating: { value: 4.6, max: 5, reviews: 34123 },
+      duration: { hours: 21, lectures: 217 },
+      level: "All Levels",
+      price: { current: "₹3,699", original: null },
+      instructors: ["Kirill Eremenko", "SuperDataScience Team", "Ligency Team"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_4" title="Data Science A-Z: Hands-On Exercises & ChatGPT Prize [2024]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Advanced Machine Learning with TensorFlow and Keras",
+      description: "Deep dive into advanced machine learning techniques using TensorFlow and Keras, focusing on neural networks, deep learning, and AI applications.",
+      rating: { value: 4.7, max: 5, reviews: 22876 },
+      duration: { hours: 40, lectures: 180 },
+      level: "Intermediate to Advanced",
+      price: { current: "₹5,499", original: null },
+      instructors: ["Andrew Ng", "DeepLearning.ai"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_5" title="Advanced Machine Learning with TensorFlow and Keras" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    }
+],
+communication: [
+    {
+      title: "The Complete Communication Skills Master Class for Life",
+      description: "Communication Skills for Persuasion, Assertiveness, and All Business Communication Needs.",
+      rating: { value: 4.5, max: 5, reviews: 28703 },
+      duration: { hours: 31.5, lectures: 609 },
+      level: "All Levels",
+      price: { current: "₹3,099", original: null },
+      instructors: ["TJ Walker"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" title="The Complete Communication Skills Master Class for Life" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Communication Skills for Beginners",
+      description: "Start Building Your Communication Skills Now.",
+      rating: { value: 4.5, max: 5, reviews: 6824 },
+      duration: { hours: 31.5, lectures: 615 },
+      level: "Beginner",
+      price: { current: "₹3,099", original: null },
+      instructors: ["TJ Walker"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" title="Communication Skills for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Winning Communication Skills for Telephone, Conference Calls",
+      description: "Improve Communication Skills - Use the Telephone Effectively! Avoid Phone Etiquette Blunders that Annoy.",
+      rating: { value: 4.6, max: 5, reviews: 2900 },
+      duration: { hours: 28.5, lectures: 607 },
+      level: "All Levels",
+      price: { current: "₹2,899", original: null },
+      instructors: ["TJ Walker", "Media Training Worldwide Digital"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_3" title="Winning Communication Skills for Telephone, Conference Calls" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Public Relations: Media Crisis Communications",
+      description: "Public Relations: You Can Shape and Control Your Media Messages at The Worst Possible Times.",
+      rating: { value: 4.5, max: 5, reviews: 2925 },
+      duration: { hours: 2, lectures: 28 },
+      level: "All Levels",
+      price: { current: "₹2,899", original: null },
+      instructors: ["TJ Walker", "Media Training Worldwide Digital"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_4" title="Public Relations: Media Crisis Communications" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    },
+    {
+      title: "Mastering Non-Verbal Communication",
+      description: "Learn how to effectively use body language, facial expressions, and gestures to enhance communication.",
+      rating: { value: 4.7, max: 5, reviews: 10456 },
+      duration: { hours: 12, lectures: 150 },
+      level: "All Levels",
+      price: { current: "₹3,299", original: null },
+      instructors: ["Deborah Grayson Riegel"],
+      videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_5" title="Mastering Non-Verbal Communication" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
     }
 ]
 };
