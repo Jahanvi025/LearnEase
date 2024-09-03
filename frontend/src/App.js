@@ -18,6 +18,8 @@ import DashboardPage from "./pages/DashboardPage";
 import {useDispatch} from "react-redux";
 import Cookies from "js-cookie";
 import {fetchUser} from "./redux/slice/userSlice";
+import Custom404 from "./components/NotFound";
+import addCourse from "./components/Admin/Courses/addCourse";
 
 
 function App() {
@@ -36,8 +38,11 @@ function App() {
             <HomeHoc exact component={VerifyOtp} path="/verify-otp"/>
             <Routes>
                 <Route path="/Learn-Hub-admin" element={<AdminAuth/>}/>
+                {/*<Route path='*' element={<Custom404/>}/>*/}
             </Routes>
             <AdminHOC exact component={DashboardPage} path="/admin/dashboard"/>
+            <AdminHOC exact component={addCourse} path="/admin/add-course"/>
+
         </>
     );
 }
