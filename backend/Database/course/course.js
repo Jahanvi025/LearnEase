@@ -16,6 +16,10 @@ const courseSchema = new Schema({
       type: String,
       default: "Free",
     },
+    thumbnail: {
+      type: String,
+      required: true,
+    },
     tags: [String],
     students: [{
       type: Schema.Types.ObjectId,

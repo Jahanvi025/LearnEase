@@ -8,11 +8,11 @@ import {useSelector} from "react-redux";
 const AdminPageLayout = ({props,children}) => {
 const navigate = useNavigate();
 const auth = useSelector((state) => state.adminAuth)
-    // useEffect(() => {
-    //    if(!auth.isAdminAuthenticated){
-    //        navigate('/learn-hub-admin')
-    //    }
-    // }, [auth.isAdminAuthenticated, navigate]);
+    useEffect(() => {
+       if(!auth.isAdminAuthenticated){
+           navigate('/learn-hub-admin')
+       }
+    }, [auth.isAdminAuthenticated, navigate]);
 
 
     return (
