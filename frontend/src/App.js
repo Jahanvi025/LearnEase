@@ -20,6 +20,7 @@ import Cookies from "js-cookie";
 import {fetchUser} from "./redux/slice/userSlice";
 import Custom404 from "./components/NotFound";
 import addCourse from "./components/Admin/Courses/addCourse";
+import allCourses from "./components/Admin/Courses/allCourses";
 
 
 function App() {
@@ -41,7 +42,8 @@ function App() {
                 {/*<Route path='*' element={<Custom404/>}/>*/}
             </Routes>
             <AdminHOC exact component={DashboardPage} path="/admin/dashboard"/>
-            <AdminHOC exact component={addCourse} path="/admin/add-course"/>
+            <AdminHOC exact component={addCourse} path="/admin/courses/add-course"/>
+            <AdminHOC exact component={allCourses} path='/admin/courses'/>
 
         </>
     );

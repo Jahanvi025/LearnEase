@@ -2,17 +2,23 @@ import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {BookOpen, ChevronRight, DollarSign, FileText, Hash, List} from 'lucide-react'
 
+//Redux
+import {useDispatch} from "react-redux";
+import {addCourse} from "../../../redux/slice/admin/coursesSlice";
+
+
 const AddCourse = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [activeTab, setActiveTab] = useState('basic');
     const [course, setCourse] = useState({
         title: '',
         description: '',
         category: '',
         price: 'Free',
+        thumbnail: '',
         tags: [],
         syllabus: [],
-        content: [],
     });
 
     const handleChange = ( e ) => {
@@ -24,15 +30,24 @@ const AddCourse = () => {
         const values = e.target.value.split(',').map(( item ) => item.trim());
         setCourse(( prev ) => ({...prev, [field]: values}));
     };
-    const handleTabChange = (newTab) => {
+    const handleTabChange = (newTab,e) => {
+        // Prevent any default behavior that might be causing submission
+        if (newTab === 'pricing') {
+            console.log("Moving to Pricing Tab");
+        } else if (newTab === 'content') {
+            console.log("Moving to Content Tab");
+        }
         setActiveTab(newTab);
+    };
+    const handleNextClick = (e) => {
+        e.preventDefault(); // Ensure default form submission is prevented
+        e.stopPropagation(); // Prevent any other event from triggering
+        handleTabChange(activeTab === 'basic' ? 'content' : 'pricing');
     };
     const handleSubmit = async ( e ) => {
         e.preventDefault();
-
+        dispatch(addCourse(course));
         console.log('Submitting course:', course);
-        // Here you would typically send the course data to your API
-        // navigate('/courses')
     }
     return (
         <>
@@ -75,7 +90,7 @@ const AddCourse = () => {
                                     </div>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-8">
+                                <form onSubmit={handleSubmit}  className="space-y-8">
                                     {activeTab === 'basic' && (
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
@@ -179,15 +194,15 @@ const AddCourse = () => {
 
                                             <div className="space-y-2">
                                                 <label htmlFor="content" className="text-lg font-semibold">
-                                                    Content
+                                                    Thumbnail
                                                 </label>
                                                 <div className="relative">
                                                     <FileText className="absolute left-3 top-3 h-5 w-5 text-gray-400"/>
                                                     <textarea
-                                                        id="content"
-                                                        name="content"
-                                                        value={course.content.join(', ')}
-                                                        onChange={( e ) => handleArrayChange(e, 'content')}
+                                                        id="thumbnail"
+                                                        name="thumbnail"
+                                                        value={course.thumbnail}
+                                                        onChange={handleChange}
                                                         className="pl-10 p-2 border border-gray-300 rounded w-full min-h-[100px]"
                                                         placeholder="Enter content items (comma-separated)"
                                                     />
@@ -230,20 +245,22 @@ const AddCourse = () => {
                                             Previous
                                         </button>
                                         {activeTab === 'pricing' ? (
-                                            <button type="submit" className="px-4 py-2 bg-green-600 text-white rounded">
+                                            <button type="submit"  className="px-4 py-2 bg-green-600 text-white rounded">
                                                 Create Course
                                             </button>
                                         ) : (
                                             <button
-                                                type="button"
+                                                type="button"  // Ensure this is set to 'button' to prevent form submission
                                                 className="px-4 py-2 bg-blue-600 text-white rounded"
-                                                onClick={() =>
-                                                    handleTabChange(activeTab === 'basic' ? 'content' : 'pricing')
-                                                }>
+                                                onClick={
+                                                   handleNextClick
+                                                }
+                                            >
                                                 Next
                                             </button>
                                         )}
                                     </div>
+
                                 </form>
                             </div>
                         </div>
