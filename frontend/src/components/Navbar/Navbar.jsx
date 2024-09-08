@@ -58,11 +58,11 @@ console.log(userInfo.user?.userName)
             Services
           </Link>
           <Link
-            to="/pricing"
-            className={`link-font text-center w-20 ${menu === "Pricing" ? "activelink" : ""}`}
-            onClick={() => setMenu("Pricing")}
+            to="/teaching"
+            className={`link-font text-center w-28 ${menu === "Teach" ? "activelink" : ""}`}
+            onClick={() => setMenu("Teach")}
           >
-            Pricing
+            Teach Online
           </Link>
         </div>
         {userInfo.isAuthenticated ? (
