@@ -9,7 +9,7 @@ import Signin from './components/Auth/Signin.jsx';
 import Courses from './components/Courses.jsx';
 import SignUp from './components/Auth/SignUp.jsx';
 import VerifyOtp from "./components/Auth/VerifyOtp";
-
+import Teaching from "./components/Teaching/Teaching.jsx"
 //Redux
 import {useDispatch} from "react-redux";
 import Cookies from "js-cookie";
@@ -29,6 +29,7 @@ function App() {
             <HomeHoc exact component={SignUp} path='/signUp'/>
             <HomeHoc exact component={Courses} path="/Courses"/>
             <HomeHoc exact component={VerifyOtp} path="/verify-otp"/>
+            <HomeHoc exact component={Teaching} path="/teaching"/>
             
         </>
     );
