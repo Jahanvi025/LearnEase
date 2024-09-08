@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import bucket from "../../config/firebase.js";
 import content from "../../Database/content/content.js";
+import course from "../../Database/course/course.js";
 import path from "path";
 import {auth,adminOnly} from "../../middleware/auth.js";
 
@@ -33,20 +34,27 @@ router.get('/', async (req, res) => {
     * @access Public
  */
 
-router.post('/:courceId/upload',auth,adminOnly,upload.single('video'), async (req, res) => {
+router.post('/:courseId/upload',auth,adminOnly,upload.single('video'), async (req, res) => {
     try{
         if (!req.file){
             return res.status(400).json({message: "Please upload a file"});
         }
-        const {courceId} = req.params;
+        const {courseId} = req.params;
         const {title, description} = req.body;
+
+        const courseFound = await course.findById(courseId);
+        if (!courseFound){
+            return res.status(400).json({message: "Course not found"});
+        }
 
         const originalName = path.parse(req.file.originalname).name;
         const extension = path.extname(req.file.originalname);
         const date = new Date().toISOString().replace(/:/g, '-');
         const fileName = `${originalName}-${date}${extension}`;
+        const folderName = courseFound.title.replace(/\s+/g, '-').toLowerCase();
+        const filePath = `${folderName}/${fileName}`;
 
-        const blob = bucket.file(fileName);
+        const blob = bucket.file(filePath);
         const blobWriter = blob.createWriteStream({
             resumable: false,
             contentType: req.file.mimetype
@@ -57,13 +65,16 @@ router.post('/:courceId/upload',auth,adminOnly,upload.single('video'), async (re
         blobWriter.on('finish', async () => {
             const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
             const newContent = new content({
-                course: courceId,
+                course: courseId,
                 title,
                 description,
                 contentType: req.file.mimetype.split('/')[0],
                 contentUrl: publicUrl
             })
             await newContent.save();
+
+            await course.findByIdAndUpdate(courseId, {$push: {content: newContent._id}})
+
             res.status(201).json(newContent);
         })
         blobWriter.end(req.file.buffer);

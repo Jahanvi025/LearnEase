@@ -30,7 +30,7 @@ Params: None
 
 router.post('/add', auth, async ( req, res ) => {
     try {
-        const {title, description, price, category, tags, syllabus} = req.body;
+        const {title, description, price, category, tags, syllabus,thumbnail} = req.body;
 
         const user = await User.findById(req.userId);
         if (user.role !== "Admin") {
@@ -42,6 +42,7 @@ router.post('/add', auth, async ( req, res ) => {
             price,
             category,
             tags,
+            thumbnail,
             syllabus,
         }
         const courseCreated = await course.create(newCourse);
