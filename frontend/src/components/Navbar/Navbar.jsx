@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../Assets/images/infinity (1).png';
 import {RxHamburgerMenu} from "react-icons/rx";
 
@@ -10,6 +10,8 @@ import {logout} from "../../redux/slice/authSlice";
 
 
 const Navbar = () => {
+  const location = useLocation();
+  const [menu, setMenu] = useState("");
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -23,9 +25,15 @@ const Navbar = () => {
   console.log(userInfo)
   // console.log(auth.user?.profile.name)
 console.log(userInfo.user?.userName)
+  const currentPath = location.pathname;
+
+  useEffect(() => {
+    if (currentPath === "/") {
+      setMenu("Home");
+    }
+  }, [currentPath]);
 
 
-  const [menu, setMenu] = useState("Home");
 
   return (
     <div>

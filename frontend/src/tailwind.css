@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../src/Assets/font.css';
 
 @layer base {
   html {
