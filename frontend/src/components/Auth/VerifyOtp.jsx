@@ -1,12 +1,19 @@
 import React, {useEffect, useRef, useState} from 'react';
 import maillogo from '../../Assets/images/email (2).png'
-import {useLocation} from "react-router-dom";
+import {useLocation,useNavigate} from "react-router-dom";
+
+//Redux
+import {useDispatch,useSelector} from "react-redux";
+import {verifyOtp} from "../../redux/slice/authSlice";
 
 const VerifyOtp = () => {
     const [otp, setOtp] = useState(["", "", "", "", "", ""])
     const location = useLocation()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {email} = location.state;
     console.log(email)
+    const user = useSelector((state) => state.auth.user)
     const inputRefs = useRef([])
 
     useEffect(() => {
@@ -44,7 +51,14 @@ const VerifyOtp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
         const otpString = otp.join("")
+        dispatch(verifyOtp({email, otp: otpString}))
+        if(!user.loading){
+            navigate('/')
+            window.location.reload()
+        }
+
         // Here you would typically send the OTP to your backend for verification
         console.log("Submitted OTP:", otpString)
     }
