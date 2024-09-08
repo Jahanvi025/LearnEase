@@ -23,3 +23,4 @@ dist/
 build/
 *.log
 *.tmp
+/config/olms-9f450-firebase-adminsdk-b3gvs-8b9640d480.json
