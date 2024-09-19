@@ -9,26 +9,23 @@ const DisplayCourse = ({ selectedCategory }) => {
   console.log(courses);
 
   return (
-      <div className='courses_data_container'>
-        <div className='course_list'>
-          {courses.length > 0 ? (
-              courses.map(course => (
-                  <Item
-                      key={course.title}
-                      image={course.image}
-                      name={course.title}
-                      instructor={course.instructors.join(', ')}
-                      rating={course.rating.value}
-                      reviews={course.rating.reviews}
-                      new_price={course.price.current}
-                      old_price={course.price.original}
-                  />
-              ))
-          ) : (
-              <p>No courses found for the selected category.</p>
-          )}
-        </div>
+    <div className='courses_data_container'>
+      <div className='course_list'>
+        {courses.length > 0 ? (
+          courses.map(course => (
+            <Item
+              key={course.title}
+              image={course.image}
+              name={course.title}
+              new_price={course.price.current}
+              old_price={course.price.original}
+            />
+          ))
+        ) : (
+          <p>No courses found for the selected category.</p>
+        )}
       </div>
+    </div>
   );
 };
 

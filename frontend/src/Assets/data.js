@@ -221,7 +221,7 @@ const courses = {
             duration: {hours: 2, lectures: 28},
             level: "All Levels",
             price: {current: "₹2,899", original: null},
-            instructors: ["TJ Walker", "Media Training Worldwide Digital"],
+            instructors: ["TJ Walker",     "Media Training Worldwide Digital"],
             videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_4" title="Public Relations: Media Crisis Communications" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         },
         {
