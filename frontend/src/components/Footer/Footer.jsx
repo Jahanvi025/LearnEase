@@ -15,7 +15,7 @@ function Footer() {
 
   return (
     <>
-      <footer className="bg-neutral-950 h-[50vh] mt-2 relative bottom-0">
+      <footer className="bg-neutral-950 h-[50vh] relative bottom-0">
         <div className="container mx-auto py-8">
           <div className="flex justify-between flex-col md:flex-row items-center md:items-start md:gap-[5rem] text-left">
             <div className="flex flex-col w-1/2 md:p-0 py-4 gap-8">
