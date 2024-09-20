@@ -1,24 +1,12 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import HomePageLayout from '../layout/HomePage.layout';
-// import SignIn from '../pages/Auth/SignIn'; // Adjust the path as needed
+import HomePageLayout from '../layout/HomePage.layout'; // Adjust path if needed
 
-const HomeHoc = ({ component: Component, path, ...rest }) => {
-  return (
-    <>
-      <Routes>
-        <Route
-          {...rest}
-          path={path}
-          element={
-            <HomePageLayout>
-              <Component />
-            </HomePageLayout>
-          }
-        />
-        </Routes>
-    </>
-  );
+const HomeHoc = ({ component: Component }) => {
+    return (
+        <HomePageLayout>
+            <Component />
+        </HomePageLayout>
+    );
 };
 
 export default HomeHoc;
