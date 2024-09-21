@@ -176,22 +176,28 @@ Params: query
  */
 
 
-router.get('/search', async ( req, res ) => {
+router.get('/', async (req, res) => {
     try {
-        const {category, tags} = req.query;
-        let courses;
-        if (category) {
-            courses = await course.find({category: category});
-        } else if (tags) {
-            courses = await course.find({tags: {$in: tags}});
-        } else {
-            return res.status(400).json({message: "Invalid Search"});
+        const { query } = req.query;
+
+        if (!query) {
+            return res.status(400).json({ message: "Invalid Search" });
         }
+
+        const courses = await course.find({
+            $or: [
+                { category: { $regex: query, $options: 'i' } },
+                { tags: { $regex: query, $options: 'i' } }
+            ]
+        });
+
         res.status(200).json(courses);
     } catch (err) {
-        console.log(err);
-        res.status(500).json({message: "Something went wrong"});
+        console.error(err);
+        res.status(500).json({ message: "Something went wrong" });
     }
-})
+});
+
+
 
 export default router;

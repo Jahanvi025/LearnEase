@@ -63,8 +63,7 @@ router.post('/admin' , async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
-    res.send('Hello from login');
-})
+
+
 
 export default router;
