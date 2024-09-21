@@ -1,11 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from '../../Assets/images/infinity (2).png'
 import classNames from "classnames";
 import { Bell, ChevronDown,  LogOut,  Settings, User } from 'lucide-react'
+import {Link, useLocation} from "react-router-dom";
+
 
 const AdminNavbar = () => {
+    const location = useLocation();
 
-    const [menu, setMenu] = useState("Overview");
+    useEffect(() => {
+        if (location.pathname === "/admin/dashboard") {
+            setMenu("Overview")
+        }
+        if (location.pathname === "/admin/courses") {
+            setMenu("Courses")
+        }
+        if (location.pathname === "/admin/students") {
+            setMenu("Students")
+        }
+        if (location.pathname === "/admin/updates") {
+            setMenu("Updates")
+        }
+    }, [location.pathname]);
+
+    const [menu, setMenu] = useState();
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
     const toggleProfileMenu = () => setIsProfileMenuOpen(!isProfileMenuOpen)
 
@@ -19,14 +37,17 @@ const AdminNavbar = () => {
                     </div>
                     <div className='text-2xl font-bold text-white font-mono'>Admin Panel</div>
                 </div>
-                <div
-                    className='flex items-center gap-6 bg-slate-800 py-1.5 px-4 rounded-3xl mx-auto hover: cursor-pointer  '>
-                    <div onClick={() => setMenu("Overview")}
-                         className={classNames('font-medium font-mono transition-all duration-500  ', {
-                             'px-2 py-1 font-semibold bg-white text-black rounded-3xl ': menu === 'Overview',
-                             'text-white': menu !== 'Overview'
-                         })}>Overview
-                    </div>
+                    <div
+                        className='flex items-center gap-6 bg-slate-800 py-1.5 px-4 rounded-3xl mx-auto hover: cursor-pointer  '>
+                <Link to='/admin/dashboard'>
+                        <div onClick={() => setMenu("Overview")}
+                             className={classNames('font-medium font-mono transition-all duration-500  ', {
+                                 'px-2 py-1 font-semibold bg-white text-black rounded-3xl ': menu === 'Overview',
+                                 'text-white': menu !== 'Overview'
+                             })}>Overview
+                        </div>
+                </Link>
+                <Link to='/admin/courses'>
                     <div onClick={() => setMenu("Courses")}
                          className={classNames('font-medium font-mono  transition-all duration-500  ',
                              {
@@ -35,6 +56,8 @@ const AdminNavbar = () => {
                              }
                          )}>Courses
                     </div>
+                    </Link>
+
                     <div onClick={() => setMenu("Students")}
                          className={classNames('font-medium font-mono  transition-all duration-500  ',
                              {

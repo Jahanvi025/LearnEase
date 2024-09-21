@@ -35,9 +35,9 @@ const AllCourses = () => {
                 </div>
 
 
-                <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 '>
+                <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3'>
                     {courses.map(course => (
-                        <div key={course._id} className=' bg-white p-6 border border-gray-100 shadow-md hover:shadow-xl rounded-xl overflow-hidden'>
+                        <div  key={course._id} className=' bg-white p-6 border border-gray-100 shadow-md hover:shadow-xl rounded-xl overflow-hidden'>
                             <div className='flex justify-center items-center' >
                                 <img src={course.thumbnail} alt={course.title} className=' w-full h-52 object-cover'/>
                             </div>
@@ -54,7 +54,7 @@ const AllCourses = () => {
                                 </div>
                                 <div className='flex gap-1 mt-2 py-2'>
                                     {course.tags.map((tag,index) => (
-                                        <span key={index} className='bg-gray-100 border border-slate-200 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full'>{tag}</span>
+                                        <span key={index} className='bg-gray-100 text-center flex  items-center border border-slate-200 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full'>{tag}</span>
                                     ))}
                                 </div>
                             </div>
