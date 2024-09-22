@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../Assets/images/infinity (1).png';
 import {RxHamburgerMenu} from "react-icons/rx";
+import { Bell, ChevronDown,  LogOut,  Settings, User } from 'lucide-react'
 
 //Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,6 +13,8 @@ import {logout} from "../../redux/slice/authSlice";
 const Navbar = () => {
   const location = useLocation();
   const [menu, setMenu] = useState("");
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
+  const toggleProfileMenu = () => setIsProfileMenuOpen(!isProfileMenuOpen)
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -81,13 +84,28 @@ console.log(userInfo.user?.userName)
               <div className='group inline-block relative'>
 
                 <div
-                    className="flex bg-transparent border-2 hover:bg-white h-10 transition ease-out delay-150 hover:-translate-y-1 hover:scale-110   text-gray-950 hover:text-black py-2 px-4 rounded-3xl w-24 cursor-pointer">
+                    onClick={toggleProfileMenu} className="flex bg-transparent border-2 hover:bg-white h-10 transition ease-out delay-150 hover:-translate-y-1 hover:scale-110   text-gray-950 hover:text-black py-2 px-4 rounded-3xl w-24 cursor-pointer">
                   <RxHamburgerMenu className='h-full font-bold text-5xl '/>
                   <FaUserCircle className=' h-full font-bold text-5xl '/>
                 </div>
-                <button onClick={handleLogout} className=' absolute bg-transparent border-2 hover:bg-white h-10 py-2 px-4 rounded-3xl w-24 block invisible group-hover:visible ' >
-                  Logout
-                </button>
+                {isProfileMenuOpen && (
+                    <div
+                        className=" z-10 origin-top-right absolute  left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                         role="menuitem">
+                        <User className="inline-block mr-2 h-5 w-5"/> Your Profile
+                      </a>
+                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                         role="menuitem">
+                        <Settings className="inline-block mr-2 h-5 w-5"/> Settings
+                      </a>
+                      <a onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                         role="menuitem">
+                        <LogOut className="inline-block mr-2 h-5 w-5"/> Sign out
+                      </a>
+                    </div>
+                )}
 
               </div>
             </div>
