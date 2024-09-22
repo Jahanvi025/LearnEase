@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { PlusCircle, X, UploadCloud } from 'lucide-react';
-import { useLocation } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {PlusCircle, X} from 'lucide-react';
+import {useLocation} from "react-router-dom";
 
 //Redux
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCourseById } from "../../../redux/slice/admin/coursesSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCourseById} from "../../../redux/slice/admin/coursesSlice";
 import {fetchContentByID} from "../../../redux/slice/admin/contentSlice";
+import UploadContent from "../../uploadContent";
 
 export default function SingleCoursePage() {
     const location = useLocation();
@@ -42,94 +43,51 @@ export default function SingleCoursePage() {
         if (course) {
             setCourse(course);
             // Fetch content details for each content ID
-            course.content.forEach((contentId) => {
-                dispatch(fetchContentByID({ courseId, contentId }));
+            course.content.forEach(( contentId ) => {
+                dispatch(fetchContentByID({courseId, contentId}));
             });
 
         }
     }, [course, dispatch, courseId]);
 
 
-
     console.log(contentDetail);
 
     const [newTag, setNewTag] = useState('');
     const [newSyllabusItem, setNewSyllabusItem] = useState('');
-    const [newContentItem, setNewContentItem] = useState('');
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [uploadProgress, setUploadProgress] = useState(0);
-    const [isUploading, setIsUploading] = useState(false);
     const [activeTab, setActiveTab] = useState('details');
 
-    const handleInputChange = (e) => {
-        setCourse({ ...course, [e.target.name]: e.target.value });
+    const handleInputChange = ( e ) => {
+        setCourse({...course, [e.target.name]: e.target.value});
     };
 
     const handleAddTag = () => {
         if (newTag && !course.tags.includes(newTag)) {
-            setCourse({ ...course, tags: [...course.tags, newTag] });
+            setCourse({...course, tags: [...course.tags, newTag]});
             setNewTag('');
         }
     };
 
-    const handleRemoveTag = (tag) => {
-        setCourse({ ...course, tags: course.tags.filter(t => t !== tag) });
+    const handleRemoveTag = ( tag ) => {
+        setCourse({...course, tags: course.tags.filter(t => t !== tag)});
     };
 
     const handleAddSyllabusItem = () => {
         if (newSyllabusItem) {
-            setCourse({ ...course, syllabus: [...course.syllabus, newSyllabusItem] });
+            setCourse({...course, syllabus: [...course.syllabus, newSyllabusItem]});
             setNewSyllabusItem('');
         }
     };
 
-    const handleRemoveSyllabusItem = (item) => {
-        setCourse({ ...course, syllabus: course.syllabus.filter(i => i !== item) });
+    const handleRemoveSyllabusItem = ( item ) => {
+        setCourse({...course, syllabus: course.syllabus.filter(i => i !== item)});
     };
 
-    const handleAddContentItem = () => {
-        if (newContentItem) {
-            setCourse({ ...course, content: [...course.content, newContentItem] });
-            setNewContentItem('');
-        }
-    };
 
-    const handleRemoveContentItem = (item) => {
-        setCourse({ ...course, content: course.content.filter(i => i !== item) });
-    };
 
-    const handleFileChange = (event) => {
-        if (event.target.files && event.target.files[0]) {
-            setSelectedFile(event.target.files[0]);
-            setUploadProgress(0);
-        }
-    };
 
-    const handleUpload = () => {
-        if (selectedFile) {
-            setIsUploading(true);
-            const totalSize = selectedFile.size;
-            let uploadedSize = 0;
-            const chunkSize = totalSize / 100;
 
-            const uploadChunk = () => {
-                uploadedSize += chunkSize;
-                const progress = Math.min(Math.round((uploadedSize / totalSize) * 100), 100);
-                setUploadProgress(progress);
 
-                if (progress < 100) {
-                    setTimeout(uploadChunk, 50);
-                } else {
-                    setIsUploading(false);
-                    setCourse({ ...course, content: [...course.content, selectedFile.name] });
-                    alert(`Content uploaded successfully!`);
-                    setSelectedFile(null);
-                }
-            };
-
-            uploadChunk();
-        }
-    };
 
     return (
         <div className="container mx-auto py-8 px-4 max-w-4xl">
@@ -160,45 +118,59 @@ export default function SingleCoursePage() {
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
-                                <input id="title" name="title" value={course.title} onChange={handleInputChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                                <input id="title" name="title" value={course.title} onChange={handleInputChange}
+                                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-                                <input id="category" name="category" value={course.category} onChange={handleInputChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                                <label htmlFor="category"
+                                       className="block text-sm font-medium text-gray-700">Category</label>
+                                <input id="category" name="category" value={course.category}
+                                       onChange={handleInputChange}
+                                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price</label>
-                                <input id="price" name="price" value={course.price} onChange={handleInputChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                                <input id="price" name="price" value={course.price} onChange={handleInputChange}
+                                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="thumbnail" className="block text-sm font-medium text-gray-700">Thumbnail URL</label>
-                                <input id="thumbnail" name="thumbnail" value={course.thumbnail} onChange={handleInputChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                                <label htmlFor="thumbnail" className="block text-sm font-medium text-gray-700">Thumbnail
+                                    URL</label>
+                                <input id="thumbnail" name="thumbnail" value={course.thumbnail}
+                                       onChange={handleInputChange}
+                                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-                            <textarea id="description" name="description" value={course.description} onChange={handleInputChange} rows={4} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                            <label htmlFor="description"
+                                   className="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea id="description" name="description" value={course.description}
+                                      onChange={handleInputChange} rows={4}
+                                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
                         <div className="space-y-2">
                             <label className="block text-sm font-medium text-gray-700">Tags</label>
                             <div className="flex flex-wrap gap-2">
-                                {course.tags.map((tag, index) => (
-                                    <span key={index} className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-sm flex items-center">
+                                {course.tags.map(( tag, index ) => (
+                                    <span key={index}
+                                          className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-sm flex items-center">
                                         {tag}
-                                        <button onClick={() => handleRemoveTag(tag)} className="ml-1 text-gray-500 hover:text-gray-700">
-                                            <X className="h-3 w-3" />
+                                        <button onClick={() => handleRemoveTag(tag)}
+                                                className="ml-1 text-gray-500 hover:text-gray-700">
+                                            <X className="h-3 w-3"/>
                                         </button>
                                     </span>
                                 ))}
                                 <div className="flex">
                                     <input
                                         value={newTag}
-                                        onChange={(e) => setNewTag(e.target.value)}
+                                        onChange={( e ) => setNewTag(e.target.value)}
                                         placeholder="New tag"
                                         className="w-32 rounded-l-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                     />
-                                    <button onClick={handleAddTag} className="bg-blue-500 text-white px-2 py-1 rounded-r-md hover:bg-blue-600">
-                                        <PlusCircle className="h-4 w-4" />
+                                    <button onClick={handleAddTag}
+                                            className="bg-blue-500 text-white px-2 py-1 rounded-r-md hover:bg-blue-600">
+                                        <PlusCircle className="h-4 w-4"/>
                                     </button>
                                 </div>
                             </div>
@@ -206,14 +178,14 @@ export default function SingleCoursePage() {
                         <div className="space-y-2">
                             <label className="block text-sm font-medium text-gray-700">Syllabus</label>
                             <ul className="list-disc list-inside space-y-1">
-                                {course.syllabus.map((item, index) => (
+                                {course.syllabus.map(( item, index ) => (
                                     <li key={index} className="flex items-center justify-between">
                                         <span>{item}</span>
                                         <button
                                             onClick={() => handleRemoveSyllabusItem(item)}
                                             className="text-gray-500 hover:text-gray-700"
                                         >
-                                            <X className="h-4 w-4" />
+                                            <X className="h-4 w-4"/>
                                         </button>
                                     </li>
                                 ))}
@@ -221,18 +193,21 @@ export default function SingleCoursePage() {
                             <div className="flex">
                                 <input
                                     value={newSyllabusItem}
-                                    onChange={(e) => setNewSyllabusItem(e.target.value)}
+                                    onChange={( e ) => setNewSyllabusItem(e.target.value)}
                                     placeholder="New syllabus item"
                                     className="flex-grow rounded-l-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 />
-                                <button onClick={handleAddSyllabusItem} className="bg-blue-500 text-white px-2 py-1 rounded-r-md hover:bg-blue-600">
-                                    <PlusCircle className="h-4 w-4" />
+                                <button onClick={handleAddSyllabusItem}
+                                        className="bg-blue-500 text-white px-2 py-1 rounded-r-md hover:bg-blue-600">
+                                    <PlusCircle className="h-4 w-4"/>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div className="mt-6">
-                        <button onClick={() => console.log('Save course:', course)} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save Changes</button>
+                        <button onClick={() => console.log('Save course:', course)}
+                                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save Changes
+                        </button>
                     </div>
                 </div>
             )}
@@ -266,43 +241,8 @@ export default function SingleCoursePage() {
                                 ))}
                             </ul>
                         </div>
-                        <div className="flex">
-                            <input
-                                value={newContentItem}
-                                onChange={( e ) => setNewContentItem(e.target.value)}
-                                placeholder="New content item"
-                                className="flex-grow rounded-l-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            />
-                            <button onClick={handleAddContentItem}
-                                    className="bg-blue-500 text-white px-2 py-1 rounded-r-md hover:bg-blue-600">
-                                <PlusCircle className="h-4 w-4"/>
-                            </button>
-                        </div>
-                    <div className="space-y-2">
-                        <label htmlFor="content-upload" className="block text-sm font-medium text-gray-700">Upload New
-                            Content</label>
-                        <input id="content-upload" type="file" onChange={handleFileChange}
-                               className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
-                    </div>
-                    {selectedFile && (
-                        <div className="space-y-2">
-                            <p className="text-sm font-medium">Selected file: {selectedFile.name}</p>
-                            <div className="w-full bg-gray-200 rounded-full h-2.5">
-                                <div className="bg-blue-600 h-2.5 rounded-full"
-                                     style={{width: `${uploadProgress}%`}}></div>
-                            </div>
-                            <p className="text-sm text-gray-600">
-                                {uploadProgress}% uploaded
-                            </p>
-                        </div>
-                    )}
-                    <button
-                        onClick={handleUpload}
-                        disabled={!selectedFile || isUploading}
-                        className={`w-full ${!selectedFile || isUploading ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'} text-white font-bold py-2 px-4 rounded`}
-                        >
-                            {isUploading ? 'Uploading...' : 'Upload Content'}
-                        </button>
+
+                        <UploadContent courseId={courseId}/>
                     </div>
                 </div>
             )}

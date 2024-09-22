@@ -29,6 +29,7 @@ const Signin = () => {
     useEffect(() => {
         if (auth.isAuthenticated) {
             navigate('/');
+            window.location.reload();
         }
     }, [auth.isAuthenticated, navigate]);
 
