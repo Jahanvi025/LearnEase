@@ -62,7 +62,7 @@ export const deleteCourse = createAsyncThunk('courses/deleteCourse', async (id, 
 
 export const fetchCourseBySearch = createAsyncThunk('courses/fetchCourseBySearch', async (query, thunkAPI) => {
     try {
-        let response = await axios.get(`http://localhost:5000/course/search?query=${query}`);
+        let response = await axios.get(`http://localhost:5000/course?query=${query}`);
         return response.data;
 
     }catch (err){
@@ -154,6 +154,22 @@ const coursesSlice = createSlice({
                 state.courses=state.courses.filter(course => course._id !== action.payload.id);
             })
             .addCase(deleteCourse.rejected, (state, action) => {
+                state.loading=false;
+                state.error=action.payload;
+            })
+
+        /**
+         * For searching course
+         */
+            .addCase(fetchCourseBySearch.pending, (state) => {
+                state.loading=true;
+                state.error=null;
+            })
+            .addCase(fetchCourseBySearch.fulfilled, (state, action) => {
+                state.loading=false;
+                state.courses=action.payload;
+            })
+            .addCase(fetchCourseBySearch.rejected, (state, action) => {
                 state.loading=false;
                 state.error=action.payload;
             })
