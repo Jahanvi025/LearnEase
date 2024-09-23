@@ -25,9 +25,9 @@ const Navbar = () => {
 
   const userInfo = useSelector((state) => state.user);
 
-  console.log(userInfo)
-  // console.log(auth.user?.profile.name)
-console.log(userInfo.user?.userName)
+
+
+
   const currentPath = location.pathname;
 
   useEffect(() => {
@@ -55,7 +55,7 @@ console.log(userInfo.user?.userName)
             Home
           </Link>
           <Link
-            to="/about"
+            to="/courses"
             className={`link-font text-center w-20 ${menu === "Courses" ? "activelink" : ""}`}
             onClick={() => setMenu("Courses")}
           >

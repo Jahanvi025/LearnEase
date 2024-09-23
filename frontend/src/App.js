@@ -2,6 +2,7 @@ import './App.css';
 import './tailwind.css';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Cookies from "js-cookie";
 
 // Components
 import HomeHoc from './HOC/Home.HOC.jsx';
@@ -13,17 +14,16 @@ import VerifyOtp from "./components/Auth/VerifyOtp";
 import AdminAuth from "./components/Admin/Auth/AdminAuth";
 import AdminHOC from "./HOC/Admin.HOC";
 import DashboardPage from "./pages/DashboardPage";
-
-// Redux
-import { useDispatch } from "react-redux";
-import Cookies from "js-cookie";
-import { fetchUser } from "./redux/slice/userSlice";
 import Custom404 from "./components/NotFound";
 import addCourse from "./components/Admin/Courses/addCourse";
 import SingleCoursePage from "./components/Admin/Courses/singleCourse";
-import teaching from "./components/Teaching/Teaching";
 import teachingPage from "./pages/TeachingPage";
 import searchResult from "./components/Courses/searchResult";
+
+// Redux
+import { useDispatch } from "react-redux";
+import { fetchUser } from "./redux/slice/userSlice";
+
 
 const allCourses = lazy(() => import('./components/Admin/Courses/allCourses'));
 
