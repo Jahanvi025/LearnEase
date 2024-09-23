@@ -23,6 +23,38 @@ router.get("/", async ( req, res ) => {
 })
 
 /*
+Route /course/search
+Des: Search for a course
+Params: query
+ */
+
+
+router.get('/search', async (req, res) => {
+    try {
+        const { query } = req.query;
+
+        if (!query) {
+            return res.status(400).json({ message: "Invalid Search" });
+        }
+
+        const courses = await course.find({
+            $or: [
+                { category: { $regex: query, $options: 'i' } },
+                { tags: { $regex: query, $options: 'i' } }
+            ]
+        });
+
+        res.status(200).json(courses);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Something went wrong" });
+    }
+});
+
+
+
+
+/*
 Route: /course/add
 Des: Add a new course
 Params: None
@@ -168,35 +200,6 @@ router.post('/:id/enroll', auth, async ( req, res ) => {
         res.status(500).json({message: "Something went wrong"});
     }
 })
-
-/*
-Route /course/search
-Des: Search for a course
-Params: query
- */
-
-
-router.get('/', async (req, res) => {
-    try {
-        const { query } = req.query;
-
-        if (!query) {
-            return res.status(400).json({ message: "Invalid Search" });
-        }
-
-        const courses = await course.find({
-            $or: [
-                { category: { $regex: query, $options: 'i' } },
-                { tags: { $regex: query, $options: 'i' } }
-            ]
-        });
-
-        res.status(200).json(courses);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: "Something went wrong" });
-    }
-});
 
 
 
