@@ -1,16 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import data_course from '../../Assets/data.js';
 import Item from "../Courses/Item.jsx";
 
-const DisplayCourse = ({ selectedCategory }) => {
-  // Get courses for the selected category
-  const courses = data_course[selectedCategory] || [];
+//Redux
+import {useSelector, useDispatch} from "react-redux";
+import {fetchCourseBySearch} from "../../redux/slice/admin/coursesSlice";
 
-  console.log(courses);
+
+const DisplayCourse = ({ selectedCategory }) => {
+    const dispatch = useDispatch();
+const category = selectedCategory.toLowerCase();
+    const { courses, loading, error } = useSelector(state => state.courses);
+    useEffect(() => {
+        dispatch(fetchCourseBySearch(category));
+    }, [dispatch, category]);
+    console.log(courses)
 
   return (
       <div className='courses_data_container'>
-        <div className='course_list grid grid-cols-3 gap-5 px-5 py-5'>
+        <div className='course_list'>
           {courses.length > 0 ? (
               courses.map(course => (
                   <Item

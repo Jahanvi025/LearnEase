@@ -62,7 +62,7 @@ export const deleteCourse = createAsyncThunk('courses/deleteCourse', async (id, 
 
 export const fetchCourseBySearch = createAsyncThunk('courses/fetchCourseBySearch', async (query, thunkAPI) => {
     try {
-        let response = await axios.get(`http://localhost:5000/course?query=${query}`);
+        let response = await axios.get(`http://localhost:5000/course/search?query=${query}`);
         return response.data;
 
     }catch (err){
