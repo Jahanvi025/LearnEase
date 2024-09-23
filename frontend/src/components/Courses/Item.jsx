@@ -1,20 +1,19 @@
 import React from 'react';
 
-const Item = ({ image, name, instructor, rating, reviews, new_price, old_price }) => {
+const Item = ({ image, title,key ,category ,price, tags, students}) => {
   return (
     <div className='course_item'>
-      <img src={image} alt={name} className='course_image' />
-      <h3 className='course_name'>{name}</h3>
-      <div className='course_rating'>
-        <span>{rating}</span>
-        <span className='course_reviews'>({reviews} reviews)</span>
-      </div>
-      <div className='course_pricing'>
-        <span className='new_price'>₹{new_price}</span>
-        {old_price && (
-          <span className='old_price'>₹{old_price}</span>
-        )}
-      </div>
+      <img src={image} alt={title} className='w-10 h-16' />
+      <h3 className='course_name'>{title}</h3>
+        <p className='course_category'>{category}</p>
+        <p className='course_price'>{price}</p>
+        <p className='course_students'>{students} Students</p>
+        <div className='course_tags'>
+            {tags.map((tag, index) => (
+                <span key={index} className='tag'>{tag}</span>
+            ))}
+        </div>
+
     </div>
   );
 };
