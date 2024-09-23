@@ -10,7 +10,7 @@ const DisplayCourse = ({ selectedCategory }) => {
 
   return (
       <div className='courses_data_container'>
-        <div className='course_list'>
+        <div className='course_list grid grid-cols-3 gap-5 px-5 py-5'>
           {courses.length > 0 ? (
               courses.map(course => (
                   <Item

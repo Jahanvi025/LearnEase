@@ -73,6 +73,7 @@ export const fetchCourseBySearch = createAsyncThunk('courses/fetchCourseBySearch
 const coursesSlice = createSlice({
     name: 'courses',
     initialState: {
+        fetchedCourses:[],
         courses: [],
         course: null,
         status: 'idle',
@@ -167,7 +168,7 @@ const coursesSlice = createSlice({
             })
             .addCase(fetchCourseBySearch.fulfilled, (state, action) => {
                 state.loading=false;
-                state.courses=action.payload;
+                state.fetchedCourses=action.payload;
             })
             .addCase(fetchCourseBySearch.rejected, (state, action) => {
                 state.loading=false;
