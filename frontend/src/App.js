@@ -23,6 +23,7 @@ import searchResult from "./components/Courses/searchResult";
 // Redux
 import { useDispatch } from "react-redux";
 import { fetchUser } from "./redux/slice/userSlice";
+
 import CourseLecture from './components/CourseLecture/CourseLecture.jsx';
 
 
@@ -48,6 +49,7 @@ function App() {
                 <Route path="/verify-otp" element={<HomeHoc component={VerifyOtp} />} />
                 <Route path="/teaching" element={<HomeHoc component={teachingPage}/> }/>
                 <Route path="/search" element={<HomeHoc component={searchResult}/> }/>
+
                 <Route path="courses/:category/:courseKey" element={<HomeHoc component={CourseLecture} />} />
 
                 {/* Admin Routes */}
