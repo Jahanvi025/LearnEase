@@ -15,6 +15,7 @@ const category = selectedCategory.toLowerCase();
         dispatch(fetchCourseBySearch(category));
     }, [dispatch, category]);
     console.log(courses)
+    console.log(category)
 
   return (
       <div className='courses_data_container'>
