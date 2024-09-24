@@ -3,7 +3,7 @@ import {useLocation,useNavigate} from "react-router-dom";
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCourseBySearch} from "../../redux/slice/admin/coursesSlice";
+import {fetchCourseBySearch, fetchCourses} from "../../redux/slice/admin/coursesSlice";
 import {BookOpen, IndianRupee, UsersRound} from "lucide-react";
 
 const useQuery = () => {
@@ -20,6 +20,10 @@ const {courses,loading, error} = useSelector(state => state.courses);
     useEffect(() => {
         dispatch(fetchCourseBySearch(searchQuery));
     }, [dispatch, searchQuery]);
+
+    console.log(courses)
+
+    // console.log(fetchedCourses)
 
     return (
         <>

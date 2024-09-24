@@ -24,6 +24,8 @@ import searchResult from "./components/Courses/searchResult";
 import { useDispatch } from "react-redux";
 import { fetchUser } from "./redux/slice/userSlice";
 
+import CourseLecture from './components/CourseLecture/CourseLecture.jsx';
+
 
 const allCourses = lazy(() => import('./components/Admin/Courses/allCourses'));
 
@@ -47,6 +49,8 @@ function App() {
                 <Route path="/verify-otp" element={<HomeHoc component={VerifyOtp} />} />
                 <Route path="/teaching" element={<HomeHoc component={teachingPage}/> }/>
                 <Route path="/search" element={<HomeHoc component={searchResult}/> }/>
+
+                <Route path="courses/:category/:courseKey" element={<HomeHoc component={CourseLecture} />} />
 
                 {/* Admin Routes */}
                 <Route path="/Learn-Hub-admin" element={<AdminAuth />} />
