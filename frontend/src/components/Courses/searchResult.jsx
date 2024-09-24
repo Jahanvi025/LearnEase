@@ -15,13 +15,13 @@ const SearchResult = () => {
 
 const query = useQuery();
 const searchQuery = query.get('q')? query.get('q').toLowerCase(): null;
-const {fetchedCourses,loading, error} = useSelector(state => state.courses);
+const {courses,loading, error} = useSelector(state => state.courses);
 
     useEffect(() => {
         dispatch(fetchCourseBySearch(searchQuery));
     }, [dispatch, searchQuery]);
 
-    console.log(fetchedCourses)
+    console.log(courses)
 
     // console.log(fetchedCourses)
 
@@ -33,7 +33,7 @@ const {fetchedCourses,loading, error} = useSelector(state => state.courses);
                 </div>
 
                 <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3'>
-                    {fetchedCourses.map((course) => (
+                    {courses.map((course) => (
                         <div key={course._id}
                              className=' bg-white p-6 border border-gray-100 shadow-md hover:shadow-xl rounded-xl overflow-hidden'>
                             <div className='flex justify-center items-center'>

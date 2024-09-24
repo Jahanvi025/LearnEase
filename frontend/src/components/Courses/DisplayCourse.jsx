@@ -1,43 +1,35 @@
-import React, {useEffect} from 'react';
-import data_course from '../../Assets/data.js';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCourseBySearch } from "../../redux/slice/admin/coursesSlice";
 import Item from "../Courses/Item.jsx";
-
-//Redux
-import {useSelector, useDispatch} from "react-redux";
-import {fetchCourseBySearch} from "../../redux/slice/admin/coursesSlice";
-
 
 const DisplayCourse = ({ selectedCategory }) => {
     const dispatch = useDispatch();
-const category = selectedCategory.toLowerCase();
+    const category = selectedCategory.toLowerCase();
     const { courses, loading, error } = useSelector(state => state.courses);
+
     useEffect(() => {
         dispatch(fetchCourseBySearch(category));
     }, [dispatch, category]);
-    console.log(courses)
 
-  return (
-      <div className='courses_data_container'>
-        <div className='course_list'>
-          {courses.length > 0 ? (
-              courses.map(course => (
-                  <Item
-                      key={course.title}
-                      image={course.image}
-                      name={course.title}
-                      instructor={course.instructors.join(', ')}
-                      rating={course.rating.value}
-                      reviews={course.rating.reviews}
-                      new_price={course.price.current}
-                      old_price={course.price.original}
-                  />
-              ))
-          ) : (
-              <p>No courses found for the selected category.</p>
-          )}
+    return (
+        <div className='courses_data_container display grid gap-6 bg-neutral-950'>
+            <div className='courses_data_container grid grid-cols-4 grid-rows-2 gap-6'>
+                {courses.slice(0, 6).map((course) => (
+                    <Item
+                        key={course._id} // This key is for React's internal tracking
+                        courseKey={course._id} // This is the prop you pass to Item for linking
+                        image={course.thumbnail}
+                        title={course.title}
+                        category={course.category}
+                        price={course.price}
+                        tags={course.tags}
+                        students={course.students.length}
+                    />
+                ))}
+            </div>
         </div>
-      </div>
-  );
+    );
 };
 
 export default DisplayCourse;
