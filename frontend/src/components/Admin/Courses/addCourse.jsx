@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {BookOpen, ChevronRight, DollarSign, FileText, Hash, List} from 'lucide-react'
-
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 //Redux
 import {useDispatch} from "react-redux";
 import {addCourse} from "../../../redux/slice/admin/coursesSlice";
@@ -20,6 +21,7 @@ const AddCourse = () => {
         tags: [],
         syllabus: [],
     });
+    console.log(course.description)
 
     const handleChange = ( e ) => {
         const {name, value} = e.target;
@@ -48,6 +50,7 @@ const AddCourse = () => {
         e.preventDefault();
         dispatch(addCourse(course));
         console.log('Submitting course:', course);
+        return navigate('/admin/courses');
     }
     return (
         <>
@@ -124,13 +127,14 @@ const AddCourse = () => {
                                                             category: e.target.value
                                                         }))}
                                                         className="p-2 border border-gray-300 rounded w-full"
+                                                        defaultValue="Select a category"
                                                     >
-                                                        <option value="" disabled selected>
+                                                        <option disabled >
                                                             Select a category
                                                         </option>
-                                                        <option value="programming">Programming</option>
+                                                        <option  value="programming">Programming</option>
                                                         <option value="design">Design</option>
-                                                        <option value="business">Business</option>
+                                                        <option value="data science">Data Science</option>
                                                         <option value="other">Other</option>
                                                     </select>
                                                 </div>
@@ -141,15 +145,25 @@ const AddCourse = () => {
                                                     Description
                                                 </label>
                                                 <div className="relative">
-                                                    <FileText className="absolute left-3 top-3 h-5 w-5 text-gray-400"/>
-                                                    <textarea
+
+                                                    <ReactQuill
                                                         id="description"
-                                                        name="description"
-                                                        required
                                                         value={course.description}
-                                                        onChange={handleChange}
-                                                        className="pl-10 p-2 border border-gray-300 rounded w-full min-h-[100px]"
+                                                        onChange={(value) => handleChange({ target: { name: 'description', value } })}
                                                         placeholder="Describe your course"
+                                                        modules={{
+                                                            toolbar: [
+                                                                [{ 'header': [1, 2, 3, false] }],
+                                                                ['bold', 'italic', 'underline', 'strike'],
+                                                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                                                ['clean']
+                                                            ]
+                                                        }}
+                                                        formats={[
+                                                            'header', 'bold', 'italic', 'underline', 'strike',
+                                                            'list', 'bullet', 'link', 'image'
+                                                        ]}
+
                                                     />
                                                 </div>
                                             </div>

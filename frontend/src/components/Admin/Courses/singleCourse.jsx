@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {PlusCircle, X} from 'lucide-react';
 import {useLocation} from "react-router-dom";
-
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
 //Redux
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCourseById} from "../../../redux/slice/admin/coursesSlice";
@@ -49,9 +50,6 @@ export default function SingleCoursePage() {
 
         }
     }, [course, dispatch, courseId]);
-
-
-    console.log(contentDetail);
 
     const [newTag, setNewTag] = useState('');
     const [newSyllabusItem, setNewSyllabusItem] = useState('');
@@ -144,9 +142,26 @@ export default function SingleCoursePage() {
                         <div className="space-y-2">
                             <label htmlFor="description"
                                    className="block text-sm font-medium text-gray-700">Description</label>
-                            <textarea id="description" name="description" value={course.description}
-                                      onChange={handleInputChange} rows={4}
-                                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            <ReactQuill
+                            id="description"
+                            value={course.description}
+                            onChange={(value) => handleInputChange({target: {name: 'description', value}})}
+                            modules={{
+                                toolbar: [
+                                    [{ 'header': [1, 2, 3, false] }],
+                                    ['bold', 'italic', 'underline', 'strike'],
+                                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                    ['clean']
+                                ]
+                            }}
+                            formats={[
+                                'header', 'bold', 'italic', 'underline', 'strike',
+                                'list', 'bullet', 'link', 'image'
+                            ]}
+                            />
+                            {/*<textarea id="description" name="description" value={course.description}*/}
+                            {/*          onChange={handleInputChange} rows={4}*/}
+                            {/*          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>*/}
                         </div>
                         <div className="space-y-2">
                             <label className="block text-sm font-medium text-gray-700">Tags</label>

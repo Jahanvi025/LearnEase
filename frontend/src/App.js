@@ -50,7 +50,8 @@ function App() {
                 <Route path="/teaching" element={<HomeHoc component={teachingPage}/> }/>
                 <Route path="/search" element={<HomeHoc component={searchResult}/> }/>
 
-                <Route path="courses/:category/:courseKey" element={<HomeHoc component={CourseLecture} />} />
+                <Route path="courses/:category/:id" element={<HomeHoc component={CourseLecture} />} />
+                <Route path="course/:id" element={<HomeHoc component={CourseLecture} />} />
 
                 {/* Admin Routes */}
                 <Route path="/Learn-Hub-admin" element={<AdminAuth />} />
