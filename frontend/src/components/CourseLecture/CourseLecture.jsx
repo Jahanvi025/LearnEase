@@ -67,8 +67,8 @@ console.log(isEnrolled);
                     <p className="text-sm text-muted-foreground">What you'll learn in this course</p>
                   </div>
                   <div className="p-6">
-                    <p className="mb-4 text-font">
-                    <div dangerouslySetInnerHTML={{ __html: course.description }}></div>
+                    <p  className="mb-4 text-font">
+                      <div dangerouslySetInnerHTML={{ __html: course.description }}></div>
                     </p>
                     <h2 className="text-2xl font-semibold mb-2">Key Topics</h2>
                     <ul className="space-y-2">

@@ -51,11 +51,11 @@ const Courses = () => {
               {category}
             </h3>
 
-          <div className="w-full rounded-lg  " >
-              <Slider {...settings}  className="rounded-lgw-full ">
+          <div className=" rounded-lg  " >
+              <Slider {...settings}  className="rounded-lg  ">
                 {groupedCourses[category].map((course) => (
-                  <Link to={`/course/${course._id}`} key={course.id} className="px-2 py-4 mx-10 h-80 w-56 bg-yellow-500 shadow-lg rounded-lg">
-                    <img src={course.thumbnail} alt={course.title} className="w-64 h-40 object-cover rounded-lg"/>
+                  <Link to={`/course/${course._id}`} key={course.id} className="px-2 py-4 mx-10 h-80  bg-yellow-500 shadow-lg rounded-lg">
+                    <img src={course.thumbnail} alt={course.title} className=" h-40 object-cover rounded-lg"/>
                     <div className="p-4">
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">{course.title}</h3>
                       <p className="text-sm text-gray-500">{course.description}</p>
