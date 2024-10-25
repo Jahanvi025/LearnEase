@@ -62,7 +62,7 @@ const Navbar = () => {
             Courses
           </Link>
           <Link
-            to="/contact"
+            to="/services"
             className={`link-font text-center w-20 ${menu === "Services" ? "activelink" : ""}`}
             onClick={() => setMenu("Services")}
           >

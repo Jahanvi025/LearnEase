@@ -58,31 +58,31 @@ function Footer() {
 
               <Link
                 to="/"
-                className="text-[16px] hover:text-[#ff0366] cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
+                className="text-[16px] hover:text-orange-600 cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
               >
                 Home
               </Link>
               <Link
                 to="/courses"
-                className="text-[16px] hover:text-[#ff0366] cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
+                className="text-[16px] hover:text-orange-600 cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
               >
                 Courses
               </Link>
               <Link
                 to="/services"
-                className="text-[16px] hover:text-[#ff0366] cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
+                className="text-[16px] hover:text-orange-600 cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
               >
                 Services
               </Link>
               <Link
                 to="/pricing"
-                className="text-[16px] hover:text-[#ff0366] cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
+                className="text-[16px] hover:text-orange-600 cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
               >
                 Pricing
               </Link>
               <Link
                 to="/about"
-                className="text-[16px] hover:text-[#ff0366] cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
+                className="text-[16px] hover:text-orange-600 cursor-pointer text-[#848383] text-font font-medium hover:font-bold"
               >
                 About Us
               </Link>

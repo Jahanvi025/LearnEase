@@ -19,7 +19,7 @@ import addCourse from "./components/Admin/Courses/addCourse";
 import SingleCoursePage from "./components/Admin/Courses/singleCourse";
 import teachingPage from "./pages/TeachingPage";
 import searchResult from "./components/Courses/searchResult";
-
+import Service from "./components/Services/Service.jsx"
 // Redux
 import { useDispatch } from "react-redux";
 import { fetchUser } from "./redux/slice/userSlice";
@@ -46,11 +46,13 @@ function App() {
                 <Route path="/login" element={<HomeHoc component={Signin} />} />
                 <Route path="/signUp" element={<HomeHoc component={SignUp} />} />
                 <Route path="/Courses" element={<HomeHoc component={Courses} />} />
+                <Route path="/Services" element={<HomeHoc component={Service} />} />
                 <Route path="/verify-otp" element={<HomeHoc component={VerifyOtp} />} />
                 <Route path="/teaching" element={<HomeHoc component={teachingPage}/> }/>
                 <Route path="/search" element={<HomeHoc component={searchResult}/> }/>
 
-                <Route path="courses/:category/:courseKey" element={<HomeHoc component={CourseLecture} />} />
+                <Route path="courses/:category/:id" element={<HomeHoc component={CourseLecture} />} />
+                <Route path="course/:id" element={<HomeHoc component={CourseLecture} />} />
 
                 {/* Admin Routes */}
                 <Route path="/Learn-Hub-admin" element={<AdminAuth />} />

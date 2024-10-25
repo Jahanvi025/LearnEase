@@ -20,7 +20,7 @@ const BecomeInstructor = () => {
         <Link to="/Learn-hub-admin">
         <button
           type="button"
-          className="px-16 text-font py-3 font-medium text-white bg-neutral-900 hover:bg-neutral-700 hover:text-orange-500 transition"
+          className="px-16 text-font py-3 font-medium text-white bg-neutral-900 hover:bg-orange-500 transition"
           onClick={handleGetStarted}
         >
           Get started
