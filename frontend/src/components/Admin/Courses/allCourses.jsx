@@ -65,7 +65,8 @@ const AllCourses = () => {
                                 </div>
                                 <div className='flex ' >
                                     <button onClick={() => {
-                                        navigate(`${course._id}`)
+                                        navigate(`${course._id}`
+                                        )
                                     }} className=' border-2 flex  items-center gap-2 border-slate-100 hover:bg-gray-100 px-4 py-2 rounded-xl'><BookOpen className='h-5 w-5' /> Preview </button>
                                 </div>
                             </div>

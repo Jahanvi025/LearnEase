@@ -6,6 +6,7 @@ const CourseCategory = () => {
     // Set default category to "webDevelopment"
     const [category, setCategory] = useState("Web Development");
 
+
     // Function to handle button clicks
     const handleCategoryChange = (newCategory) => {
         setCategory(newCategory);
