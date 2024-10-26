@@ -3,7 +3,7 @@ import {useLocation,useNavigate} from "react-router-dom";
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCourseBySearch, fetchCourses} from "../../redux/slice/admin/coursesSlice";
+import {fetchCourseBySearch} from "../../redux/slice/admin/coursesSlice";
 import {BookOpen, IndianRupee, UsersRound} from "lucide-react";
 
 const useQuery = () => {
@@ -15,7 +15,7 @@ const SearchResult = () => {
 
 const query = useQuery();
 const searchQuery = query.get('q')? query.get('q').toLowerCase(): null;
-const {courses,loading, error} = useSelector(state => state.courses);
+const {courses} = useSelector(state => state.courses);
 
     useEffect(() => {
         dispatch(fetchCourseBySearch(searchQuery));
@@ -29,7 +29,7 @@ const {courses,loading, error} = useSelector(state => state.courses);
         <>
             <div className='container mx-auto px-4 py-8' >
                 <div className='items-center flex my-10' >
-                    <h2 className='text-3xl text-font font-bold uppercase '>Search Results for {searchQuery} </h2>
+                    <h2 className='text-2xl text-font font-bold capitalize'>Search Results for {searchQuery} </h2>
                 </div>
 
                 <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3'>
@@ -42,7 +42,7 @@ const {courses,loading, error} = useSelector(state => state.courses);
                             <div className='mt-5'>
                                 <h1 className='text-2xl text-font font-bold '>{course.title}</h1>
                                 <div className='flex justify-start mt-2'>
-                                    <p className='text-font text-sm py-1 font-semibold px-2 text-center border-2 border-slate-200  rounded-3xl'>
+                                    <p className='text-font text-sm py-1 font-semibold text-orange-500 px-2 text-center border-2 border-slate-200  rounded-3xl'>
                                         {course.category}
                                     </p>
                                 </div>
@@ -51,10 +51,11 @@ const {courses,loading, error} = useSelector(state => state.courses);
                                     <p className='text-gray-500 text-font font-semibold text-sm ml-1'>{course.students.length} Students</p>
                                 </div>
                                 <div className='flex gap-1 mt-2 py-2'>
-                                    {course.tags.map(( tag, index ) => (
-                                        <span key={index}
-                                              className='bg-gray-100 text-center flex  items-center border border-slate-200 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full'>{tag}</span>
-                                    ))}
+                                {course.tags.slice(0, 3).map((tag, index) => (
+                                    <span key={index} className='bg-gray-100 text-center flex items-center border border-slate-200 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full'>
+                                    {tag}
+                                    </span>
+                                ))}
                                 </div>
                             </div>
                             <div className='flex justify-between  mt-4'>

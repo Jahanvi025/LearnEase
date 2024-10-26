@@ -8,7 +8,7 @@ const HowToBegin = () => {
       title: 'Plan your curriculum',
       content: (
         <div className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
-          <div className="md:w-1/2 pb-40">
+          <div className="md:w-1/2 ">
             <p className="text-left">Start with your passion and knowledge. Choose a promising topic using the tools provided on the platform.</p>
             <p className="text-left mt-4">The way you teach — how you bring it to life — is entirely up to you.</p>
             <h3 className="text-lg font-semibold text-left mt-6">Find help on the dashboard</h3>
@@ -16,9 +16,9 @@ const HowToBegin = () => {
           </div>
           <div className="md:w-1/2">
             <img
-              src="https://s.udemycdn.com/teaching/plan-your-curriculum-v3.jpg"
+              src="https://img.freepik.com/free-photo/female-web-designer-office-with-notebook_23-2149749855.jpg?t=st=1729899061~exp=1729902661~hmac=10e9e6a423e8f80ad32c11db51b2df927150a94dadd778ca7ebb3a5ef08f7919&w=996"
               alt="Plan your curriculum"
-              className="w-full h-auto"
+              className="w-full h-auto rounded-2xl"
             />
           </div>
         </div>
@@ -28,7 +28,7 @@ const HowToBegin = () => {
       title: 'Record your lectures',
       content: (
         <div className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
-          <div className="md:w-1/2 pb-40">
+          <div className="md:w-1/2 ">
             <p className="text-left">Use basic tools like a smartphone or a DSLR camera. Add a microphone for better audio quality.</p>
             <p className="text-left mt-4">If you prefer not to be on camera, you can capture your screen instead.</p>
             <h3 className="text-lg font-semibold text-left mt-6">Find instructions on the dashboard</h3>
@@ -36,9 +36,9 @@ const HowToBegin = () => {
           </div>
           <div className="md:w-1/2">
             <img
-              src="https://s.udemycdn.com/teaching/record-your-video-v3.jpg"
+              src="https://img.freepik.com/free-photo/student-online-cute-girl-glasses-sweater-studying-computer-typing-keyboard_140725-164206.jpg?t=st=1729898930~exp=1729902530~hmac=b33266aae399702b198fe99a3ab72fcc4234e451c84dfea7bb7edd43c1e16dd8&w=996"
               alt="Record your lectures"
-              className="w-full h-auto"
+              className="w-full h-auto rounded-2xl"
             />
           </div>
         </div>
@@ -48,7 +48,7 @@ const HowToBegin = () => {
       title: 'Launch your course',
       content: (
         <div className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
-          <div className="md:w-1/2 pb-40">
+          <div className="md:w-1/2 ">
             <p className="text-left">After recording and uploading your lectures, publish your course on the platform.</p>
             <p className="text-left mt-4">Your course will be available to learners and ready for enrollment.</p>
             <h3 className="text-lg font-semibold text-left mt-6">Find instructions on the dashboard</h3>
@@ -56,9 +56,9 @@ const HowToBegin = () => {
           </div>
           <div className="md:w-1/2">
             <img
-              src="https://s.udemycdn.com/teaching/launch-your-course-v3.jpg"
+              src="https://img.freepik.com/free-photo/business-people-using-computers-dark-office_74855-2617.jpg?t=st=1729899143~exp=1729902743~hmac=d978360798a23eb71157988d1f9ea03405861fbf7e32bfe9651a8e1fafaa52f6&w=996"
               alt="Launch your course"
-              className="w-full h-auto"
+              className="w-full h-auto rounded-2xl"
             />
           </div>
         </div>

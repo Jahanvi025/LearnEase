@@ -12,7 +12,7 @@ const Item = ({ image, title, courseKey, category, price, tags, students }) => {
 
   return (
       <div
-          className='course_item w-80 flex flex-col h-auto bg-neutral-800 rounded-2xl border-solid border-2 border-neutral-700 cursor-pointer' // Added cursor for better UX
+          className='course_item w-70 flex flex-col h-auto pb-4 bg-neutral-800 rounded-2xl border-solid border-2 border-neutral-700 cursor-pointer overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1' // Added cursor for better UX
           onClick={handleClick} // Handle click to navigate
           role="button" // For accessibility
           tabIndex={0} // For keyboard navigation
@@ -31,14 +31,16 @@ const Item = ({ image, title, courseKey, category, price, tags, students }) => {
             <p className='text-neutral-400 text-font text-sm'>{students} Students</p>
           </div>
         </div>
-        <h3 className='font-sans text-lg font-light text-neutral-100 px-2 mt-1'>{title}</h3>
-        <div className='border-t border-neutral-700'></div>
-        <div className='course_tags text-neutral-100/80 text-font flex flex-wrap gap-2 px-2'>
+        <h3 className='font-sans text-lg font-light text-neutral-100 px-2 mt-2'>{category}</h3>
+        
+        <h3 className='font-sans text-lg font-light text-neutral-100 px-2'>{title}</h3>
+       
+        <div className='course_tags text-neutral-400 mt-4 text-font text-xs text-font flex flex-wrap gap-1 px-2'>
           {tags.map(( tag, index ) => (
               <span key={index} className='tag'>{tag}</span>
           ))}
         </div>
-        <p className='course_name text-neutral-400 text-font text-xs px-2 mt-2 mb-2'>{category}</p>
+       
       </div>
   );
 };

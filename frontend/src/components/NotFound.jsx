@@ -35,7 +35,7 @@ export default function Custom404() {
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     className={`px-6 py-3 text-lg transition-colors duration-300 rounded ${
-                        isHovered ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-800'
+                        isHovered ? 'bg-orange-500 text-white' : 'bg-gray-300 text-gray-800'
                     }`}
                 >
                     Go Home

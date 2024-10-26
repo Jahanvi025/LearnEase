@@ -11,6 +11,7 @@ const CourseCategory = () => {
     const handleCategoryChange = (newCategory) => {
         setCategory(newCategory);
     };
+    
 
     return (
         <div className='w-full h-fit mb-8 px-32 py-10 bg-neutral-950'>

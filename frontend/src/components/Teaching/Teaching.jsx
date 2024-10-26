@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import teachimg from "../../Assets/images/virtual-classroom-study-space.jpg";
+
 
 // Feature Component as Functional Component
 const Feature = ({ title, description }) => {
@@ -74,7 +74,7 @@ const Teaching = () => {
           </div>
           <div className="lg:w-1/2 relative">
             <img
-              src={teachimg}
+              src="https://img.freepik.com/free-photo/virtual-classroom-study-space_23-2149178648.jpg?t=st=1729898748~exp=1729902348~hmac=e23a648d396f3382dfc7d0e1645cc7b05a953ef5675aa466aec6a3e864ffe700&w=996"
               alt="Teacher uploading a course"
               width={600}
               height={400}

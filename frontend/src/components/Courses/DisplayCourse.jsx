@@ -7,7 +7,7 @@ const DisplayCourse = ({ selectedCategory }) => {
     const dispatch = useDispatch();
     const category = selectedCategory.toLowerCase();
     console.log(category);
-    const { courses, loading, error } = useSelector(state => state.courses);
+    const { courses} = useSelector(state => state.courses);
 
     useEffect(() => {
         dispatch(fetchCourseBySearch(category));

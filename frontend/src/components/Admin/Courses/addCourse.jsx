@@ -248,7 +248,7 @@ const AddCourse = () => {
                                         <button
                                             type="button"
                                             className={`px-4 py-2 border border-gray-300 rounded ${
-                                                activeTab === 'basic' ? 'text-gray-400 cursor-not-allowed ' : 'bg-blue-600 text-white'
+                                                activeTab === 'basic' ? 'text-gray-400 cursor-not-allowed ' : 'bg-orange-500 text-white'
                                             } `}
                                             onClick={() =>
                                                 setActiveTab(
@@ -259,13 +259,13 @@ const AddCourse = () => {
                                             Previous
                                         </button>
                                         {activeTab === 'pricing' ? (
-                                            <button type="submit"  className="px-4 py-2 bg-green-600 text-white rounded">
+                                            <button type="submit"  className="px-4 py-2 bg-blue-600 text-white rounded">
                                                 Create Course
                                             </button>
                                         ) : (
                                             <button
                                                 type="button"  // Ensure this is set to 'button' to prevent form submission
-                                                className="px-4 py-2 bg-blue-600 text-white rounded"
+                                                className="px-4 py-2 bg-orange-500 text-white rounded"
                                                 onClick={
                                                    handleNextClick
                                                 }

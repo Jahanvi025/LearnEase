@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import courseimg from "../../Assets/images/programming-background-collage.jpg";
 import checkmark from "../../Assets/images/check-mark.png";
 import { useParams } from "react-router-dom";
-import { GraduationCap } from 'lucide-react';
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -50,7 +49,7 @@ console.log(isEnrolled);
             <div className="mb-8 w-full relative rounded-2xl overflow-hidden">
               <img
                   src={courseimg}
-                  alt="Advanced React and Next.js Development course cover image"
+                  alt="Advanced React and Next.js Development course coverpage"
                   className="w-[100%] h-[28rem] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

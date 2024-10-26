@@ -20,6 +20,7 @@ import SingleCoursePage from "./components/Admin/Courses/singleCourse";
 import teachingPage from "./pages/TeachingPage";
 import searchResult from "./components/Courses/searchResult";
 import Service from "./components/Services/Service.jsx"
+import Profile from "./components/Profile/Profile.jsx";
 // Redux
 import { useDispatch } from "react-redux";
 import { fetchUser } from "./redux/slice/userSlice";
@@ -50,6 +51,7 @@ function App() {
                 <Route path="/verify-otp" element={<HomeHoc component={VerifyOtp} />} />
                 <Route path="/teaching" element={<HomeHoc component={teachingPage}/> }/>
                 <Route path="/search" element={<HomeHoc component={searchResult}/> }/>
+                <Route path="/profile" element={<HomeHoc component={Profile}/> }/>
 
                 <Route path="courses/:category/:id" element={<HomeHoc component={CourseLecture} />} />
                 <Route path="course/:id" element={<HomeHoc component={CourseLecture} />} />
