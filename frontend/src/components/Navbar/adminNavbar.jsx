@@ -3,10 +3,12 @@ import logo from '../../Assets/images/infinity (2).png';
 import classNames from "classnames";
 import { Bell, ChevronDown, LogOut, Settings, User } from 'lucide-react';
 import { Link, useLocation } from "react-router-dom";
+import {logout} from "../../redux/slice/admin/adminAuthSlice";
+import {useDispatch} from "react-redux";
 
 const AdminNavbar = () => {
     const location = useLocation();
-
+    const dispatch = useDispatch();
     useEffect(() => {
         if (location.pathname === "/admin/dashboard") {
             setMenu("Overview");
@@ -25,6 +27,11 @@ const AdminNavbar = () => {
     const [menu, setMenu] = useState();
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
     const toggleProfileMenu = () => setIsProfileMenuOpen(!isProfileMenuOpen);
+
+    const handleLogout = () => {
+        dispatch(logout());
+        window.location.reload();
+    }
 
     return (
         <>
@@ -96,7 +103,7 @@ const AdminNavbar = () => {
                                 <Link to="/settings" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-gray-100" role="menuitem">
                                     <Settings className="inline-block mr-2 h-5 w-5" /> Settings
                                 </Link>
-                                <button className="block px-4 py-2 text-sm text-neutral-700 hover:bg-gray-100" role="menuitem">
+                                <button onClick={handleLogout} className="block px-4 py-2 text-sm text-neutral-700 hover:bg-gray-100" role="menuitem">
                                     <LogOut className="inline-block mr-2 h-5 w-5" /> Sign out
                                 </button>
                             </div>

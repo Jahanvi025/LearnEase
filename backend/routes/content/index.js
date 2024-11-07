@@ -63,7 +63,8 @@ router.post('/:courseId/upload',auth,adminOnly,upload.single('video'), async (re
             res.status(500).send(err.message);
         })
         blobWriter.on('finish', async () => {
-            const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+            const encodedFilePath = encodeURIComponent(blob.name)
+            const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodedFilePath}?alt=media`;
             const newContent = new content({
                 course: courseId,
                 title,

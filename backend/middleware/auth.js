@@ -4,9 +4,9 @@ import {User} from "../Database/user/user.js";
 
 export const auth  = async (req, res, next) =>{
     try{
-        let token = req.headers.authorization || req.cookies.token;
+        let token = req.headers.authorization;
         if(!token){
-            return res.status(401).json({message: "Unauthorized"})
+            return res.status(401).json({message: " Token is not found Unauthorized"})
         }
         token = token.split(" ")[1]
         let decodedData;
