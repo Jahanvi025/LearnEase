@@ -1,30 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import logo from '../../Assets/images/infinity (1).png';
 import { RxHamburgerMenu } from "react-icons/rx";
-import {LogOut, Settings, User } from 'lucide-react';
+import { LogOut, Settings, User } from 'lucide-react';
+import { FaUserCircle } from "react-icons/fa"; 
+import logo from '../../Assets/images/infinity (1).png';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { FaUserCircle } from "react-icons/fa";
 import { logout } from "../../redux/slice/authSlice";
 
 const Navbar = () => {
-  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); 
   const [menu, setMenu] = useState("");
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const toggleProfileMenu = () => setIsProfileMenuOpen(!isProfileMenuOpen);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.user);
+  const currentPath = location.pathname;
+
+  // Handle logout
   const handleLogout = () => {
     dispatch(logout());
     window.location.reload();
   };
 
-  const userInfo = useSelector((state) => state.user);
-  const currentPath = location.pathname;
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
+  // Toggle profile dropdown
+  const toggleProfileMenu = () => {
+    setIsProfileMenuOpen(!isProfileMenuOpen);
+  };
+
+  // Set active menu based on path
   useEffect(() => {
     if (currentPath === "/") {
       setMenu("Home");
@@ -32,109 +44,197 @@ const Navbar = () => {
   }, [currentPath]);
 
   return (
-    <div>
-      <nav className="w-full h-20 flex flex-row justify-around p-2 py-4 gap-14">
-        <div className="flex flex-row gap-2 pt-2">
-          <img className="h-12 w-12" src={logo} alt="logo" />
-          <h1 className="text-xl pt-2">LearnHub</h1>
-        </div>
+    <nav className="w-full bg-white shadow-sm relative z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo and Brand Name */}
+          <div className="flex items-center">
+            <img className="h-12 w-12" src={logo} alt="LearnHub Logo" />
+            <h1 className="ml-2 text-xl font-semibold">LearnHub</h1>
+          </div>
 
-        <div className="flex flex-row justify-center gap-3 pt-4 font-sans">
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex  space-x-4">
+            <Link 
+              to="/" 
+              className={`link-font w-[70px] px-4 py-2 rounded-md text-sm font-medium ${menu === "Home" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+              onClick={() => setMenu("Home")}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/courses"
+              className={`link-font w-[88px] px-4 py-2 rounded-md text-sm font-medium ${menu === "Courses" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+              onClick={() => setMenu("Courses")}
+            >
+              Courses
+            </Link>
+            <Link 
+              to="/services"
+              className={`link-font w-[86px] px-4 py-2 rounded-md text-sm font-medium ${menu === "Services" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+              onClick={() => setMenu("Services")}
+            >
+              Services
+            </Link>
+            <Link 
+              to="/teaching"
+              className={`link-font w-[120px] px-4 py-2 rounded-md text-sm font-medium ${menu === "Teach" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+              onClick={() => setMenu("Teach")}
+            >
+              Teach Online
+            </Link>
+          </div>
+
+          {/* User Authentication Links */}
+          <div className="hidden lg:block">
+            {userInfo.isAuthenticated ? (
+              <div className="relative">
+                <span className="mr-4 mb-2">Hello, {userInfo.user?.userName}</span>
+                <div className="relative inline-block">
+                  <div
+                    onClick={toggleProfileMenu}
+                    className="flex items-center cursor-pointer border border-gray-300 p-1 rounded-full hover:bg-gray-100 transition"
+                  >
+                    <FaUserCircle className="h-5 w-5 text-gray-600" />
+                  </div>
+                  {isProfileMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-2 bg-white ring-1 ring-black ring-opacity-5">
+                      <Link 
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsProfileMenuOpen(false)}
+                      >
+                        <User className="inline-block mr-2 h-4 w-4" /> Your Profile
+                      </Link>
+                      <Link 
+                        to="/settings"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsProfileMenuOpen(false)}
+                      >
+                        <Settings className="inline-block mr-2 h-4 w-4" /> Settings
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        <LogOut className="inline-block mr-2 h-4 w-4" /> Sign Out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className="space-x-2">
+                <button
+                  className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100"
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </button>
+                <button
+                  className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600" // Ensure the color works
+                  onClick={() => navigate('/signup')}
+                >
+                  Sign Up
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Hamburger Menu for Mobile */}
+          <div className="lg:hidden">
+            <button onClick={toggleMenu} className="text-gray-500 hover:text-gray-700">
+              <RxHamburgerMenu className="h-6 w-6" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             to="/"
-            className={`link-font text-center w-20 ${menu === "Home" ? "activelink" : ""}`}
-            onClick={() => setMenu("Home")}
+            className={`block px-4 py-2 rounded-md text-base font-medium ${menu === "Home" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+            onClick={() => {
+              setMenu("Home");
+              setIsMenuOpen(false);
+            }}
           >
             Home
           </Link>
           <Link
             to="/courses"
-            className={`link-font text-center w-20 ${menu === "Courses" ? "activelink" : ""}`}
-            onClick={() => setMenu("Courses")}
+            className={`block px-4 py-2 rounded-md text-base font-medium ${menu === "Courses" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+            onClick={() => {
+              setMenu("Courses");
+              setIsMenuOpen(false);
+            }}
           >
             Courses
           </Link>
           <Link
             to="/services"
-            className={`link-font text-center w-20 ${menu === "Services" ? "activelink" : ""}`}
-            onClick={() => setMenu("Services")}
+            className={`block px-4 py-2 rounded-md text-base font-medium ${menu === "Services" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+            onClick={() => {
+              setMenu("Services");
+              setIsMenuOpen(false);
+            }}
           >
             Services
           </Link>
           <Link
             to="/teaching"
-            className={`link-font text-center w-28 ${menu === "Teach" ? "activelink" : ""}`}
-            onClick={() => setMenu("Teach")}
+            className={`block px-4 py-2 rounded-md text-base font-medium ${menu === "Teach" ? "bg-black text-white" : "text-gray-700 hover:text-orange-500 hover:bg-gray-200"} transition-colors`}
+            onClick={() => {
+              setMenu("Teach");
+              setIsMenuOpen(false);
+            }}
           >
             Teach Online
           </Link>
-        </div>
-
-        {userInfo.isAuthenticated ? (
-          <div className="inline-block relative">
-            <span className='mr-4'>
-              Hello, {userInfo.user?.userName}
-            </span>
-            <div className='group inline-block relative'>
-              <div
-                onClick={toggleProfileMenu} 
-                className="flex bg-transparent border-2 hover:bg-white h-10 transition ease-out delay-150 hover:-translate-y-1 hover:scale-110 text-gray-950 hover:text-black py-2 px-4 rounded-3xl w-24 cursor-pointer"
+          {userInfo.isAuthenticated ? (
+            <div className="border-t border-gray-200 pt-4 z-20">
+              <Link
+                to="/profile"
+                className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+                onClick={() => setIsMenuOpen(false)}
               >
-                <RxHamburgerMenu className='h-full font-bold text-5xl ' />
-                <FaUserCircle className='h-full font-bold text-5xl ' />
-              </div>
-              {isProfileMenuOpen && (
-                <div
-                  className="z-10 origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  role="menu" 
-                  aria-orientation="vertical" 
-                  aria-labelledby="user-menu"
-                >
-                  <Link 
-                    to="/profile" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                    onClick={() => setIsProfileMenuOpen(false)} // Close menu on click
-                  >
-                    <User className="inline-block mr-2 h-5 w-5" /> Your Profile
-                  </Link>
-                  <Link 
-                    to="/settings" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                    onClick={() => setIsProfileMenuOpen(false)} // Close menu on click
-                  >
-                    <Settings className="inline-block mr-2 h-5 w-5" /> Settings
-                  </Link>
-                  <Link
-                    onClick={handleLogout} 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                  >
-                    <LogOut className="inline-block mr-2 h-5 w-5" /> Sign out
-                  </Link>
-                </div>
-              )}
+                Your Profile
+              </Link>
+              <Link
+                to="/settings"
+                className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Settings
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="block w-full text-left px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+              >
+                Sign Out
+              </button>
             </div>
-          </div>
-        ) : (
-          <div className="flex flex-row justify-center gap-2 pt-2 font-sans">
-            <button
-              className="text-center link-font w-28 h-10 border-solid border-[3px] border-neutral-400 rounded-xl"
-              onClick={() => navigate('/login')}
-            >
-              Login
-            </button>
-            <button
-              className="link-font text-center mb-11 text-white backgroundgrad w-28 h-10 hover:bg-gray-700 rounded-xl"
-              onClick={() => navigate('/signup')}
-            >
-              Sign Up
-            </button>
-          </div>
-        )}
-      </nav>
-    </div>
+          ) : (
+            <div className="border-t border-gray-200 pt-4">
+              <button
+                className="block w-full px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
+                onClick={() => navigate('/login')}
+              >
+                Login
+              </button>
+              <button
+                className="block w-full px-4 py-2 text-base font-medium bg-orange-500 text-white rounded-md hover:bg-orange-600" // Ensure this works
+                onClick={() => navigate('/signup')}
+              >
+                Sign Up
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </nav>
   );
 };
 
