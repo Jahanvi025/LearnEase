@@ -23,6 +23,14 @@ app.get('/getData', (req, res) => {
 
 
 const PORT = process.env.PORT || 5000;
+
+//Api to get all the application of today
+
+
+
+
+
+
 app.listen(PORT, () => {
    connectDB()
        .then(() => {

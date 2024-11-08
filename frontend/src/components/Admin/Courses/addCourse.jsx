@@ -132,7 +132,7 @@ const AddCourse = () => {
                                                         <option disabled >
                                                             Select a category
                                                         </option>
-                                                        <option  value="programming">Programming</option>
+                                                        <option  value="Web Development">Web Development</option>
                                                         <option value="design">Design</option>
                                                         <option value="data science">Data Science</option>
                                                         <option value="other">Other</option>

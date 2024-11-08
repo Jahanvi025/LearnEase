@@ -5,6 +5,9 @@ import logo from '../../../Assets/images/infinity (1).png'
 //Redux
 import {useDispatch, useSelector} from "react-redux";
 import {adminSignIn} from "../../../redux/slice/admin/adminAuthSlice";
+import {logout} from "../../../redux/slice/admin/adminAuthSlice";
+
+
 const AdminAuth = () => {
     const dispatch = useDispatch();
     const auth = useSelector((state) => state.adminAuth);

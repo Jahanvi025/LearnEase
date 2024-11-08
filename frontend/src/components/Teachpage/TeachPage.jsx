@@ -11,7 +11,6 @@ const TeachPage = () => {
           <div className="mb-4">
             <img
               src="https://s.udemycdn.com/teaching/value-prop-teach-v3.jpg"
-              srcSet="https://s.udemycdn.com/teaching/value-prop-teach-v3.jpg 1x, https://s.udemycdn.com/teaching/value-prop-teach-2x-v3.jpg 2x"
               alt="Teach your way"
               className="w-24 h-24"
             />
@@ -27,7 +26,6 @@ const TeachPage = () => {
           <div className="mb-4">
             <img
               src="https://s.udemycdn.com/teaching/value-prop-inspire-v3.jpg"
-              srcSet="https://s.udemycdn.com/teaching/value-prop-inspire-v3.jpg 1x, https://s.udemycdn.com/teaching/value-prop-inspire-2x-v3.jpg 2x"
               alt="Inspire learners"
               className="w-24 h-24"
             />
@@ -43,7 +41,6 @@ const TeachPage = () => {
           <div className="mb-4">
             <img
               src="https://s.udemycdn.com/teaching/value-prop-get-rewarded-v3.jpg"
-              srcSet="https://s.udemycdn.com/teaching/value-prop-get-rewarded-v3.jpg 1x, https://s.udemycdn.com/teaching/value-prop-get-rewarded-2x-v3.jpg 2x"
               alt="Get rewarded"
               className="w-24 h-24"
             />

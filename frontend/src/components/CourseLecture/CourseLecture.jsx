@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCourseById } from "../../redux/slice/admin/coursesSlice";
+import { fetchCourseById, enrolledCourse } from "../../redux/slice/admin/coursesSlice";
 
 const CourseLecture = () => {
   const [course, setCourse] = useState({
@@ -24,7 +24,7 @@ const CourseLecture = () => {
 
   const subject = useSelector(state => state.courses.course);
   const userInfo = useSelector((state) => state.user);
-
+const enroll = useSelector((state) => state.courses)
 
   useEffect(() => {
     if (id) {
@@ -40,7 +40,10 @@ const CourseLecture = () => {
 
   const isEnrolled = userInfo.user?.courses?.includes(id);
 
-console.log(isEnrolled);
+  const handleEnroll = () => {
+    dispatch(enrolledCourse(id));
+    window.location.reload();
+  }
 
   return (
       <div className="!visible transition-opacity duration-150 bg-background text-foreground !opacity-100">
@@ -112,18 +115,21 @@ console.log(isEnrolled);
                       </div>
                       {userInfo.isAuthenticated ? (
                           isEnrolled ? (
-                              <button className="w-full h-10 bg-neutral-950 text-orange-500 rounded-2xl hover:text-orange-300 hover:bg-neutral-800">
+                              <button className=" cursor-not-allowed w-full h-10 bg-neutral-800 text-orange-500 rounded-2xl hover:text-orange-300 hover:bg-neutral-800">
                                 Already Enrolled
                               </button>
                           ) : (
-                              <button className="w-full h-10 bg-neutral-950 text-orange-500 rounded-2xl hover:text-orange-300 hover:bg-neutral-800">
-                                Enroll Now
+                              <button onClick={handleEnroll} disabled={enroll.loading}
+                               className="w-full h-10 bg-neutral-950 text-orange-500 rounded-2xl hover:text-orange-300 hover:bg-neutral-800">
+                                {enroll.loading ? 'Enrolling...' : 'Enroll Now'}
                               </button>
                           )
                       ) : (
                           <div>
-                            <h1>Login</h1>
-                            <h2>to enroll</h2>
+                            <button
+                                className="w-full h-10 bg-neutral-950 text-orange-500 rounded-2xl hover:text-orange-300 hover:bg-neutral-800">
+                           <a href="/login">Login to Enroll</a>
+                            </button>
                           </div>
                       )}
                     </div>
