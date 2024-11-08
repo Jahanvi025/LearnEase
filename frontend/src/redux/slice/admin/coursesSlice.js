@@ -74,7 +74,7 @@ export const fetchCourseBySearch = createAsyncThunk('courses/fetchCourseBySearch
 export const enrolledCourse = createAsyncThunk('courses/enrolledCourse', async (id, thunkAPI) => {
     try {
         let token = Cookies.get('token');
-        let response = await axios.post(`http://localhost:5000/course/${id}/enroll`, {
+        let response = await axios.post(`http://localhost:5000/course/${id}/enroll`, {},{
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -136,7 +136,8 @@ const coursesSlice = createSlice({
             .addCase(fetchCourseById.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.loading = false;
-                state.course = action.payload;  // Assign the course directly without extra nesting
+                // state.course = action.payload.course;  // Assign the course directly without extra nesting
+                state.course = action.payload;
             })
             .addCase(fetchCourseById.rejected, (state, action) => {
                 state.status = 'failed';
@@ -191,6 +192,23 @@ const coursesSlice = createSlice({
                 state.loading=false;
                 state.error=action.payload;
             })
+        /**
+         * For Enrolling the Course
+         */
+            .addCase(enrolledCourse.pending, (state) => {
+                state.loading=true;
+                state.error=null;
+            })
+            .addCase(enrolledCourse.fulfilled, (state, action) => {
+                state.loading=false;
+                state.courses.push(action.payload.course);
+            })
+            .addCase(enrolledCourse.rejected, (state, action) => {
+                state.loading=false;
+                state.error=action.payload;
+            })
+
+
     },
     devTools: true
 })

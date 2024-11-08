@@ -29,6 +29,15 @@ export const createContent = createAsyncThunk('content/createContent', async ({c
     }
 })
 
+export const fetchContentByCourseID = createAsyncThunk('content/fetchContentByCourseID', async (courseId, thunkAPI) => {
+    try{
+     const response = await axios.get(`http://localhost:5000/content/${courseId}/contents`)
+        return response.data;
+    }catch (err){
+        return thunkAPI.rejectWithValue(err.response.data);
+    }
+})
+
 
 const contentSlice = createSlice({
     name: 'content',
@@ -77,6 +86,22 @@ const contentSlice = createSlice({
             state.uploadProgress = 100;
             })
             .addCase(createContent.rejected, (state, action) => {
+            state.status = 'failed';
+            state.loading = false;
+            state.error = action.payload;
+            })
+
+            // Fetch content by course ID
+            .addCase(fetchContentByCourseID.pending, (state) => {
+            state.status = 'loading';
+            state.loading = true;
+            })
+            .addCase(fetchContentByCourseID.fulfilled, (state, action) => {
+            state.status = 'success';
+            state.loading = false;
+            state.content= action.payload;
+            })
+            .addCase(fetchContentByCourseID.rejected, (state, action) => {
             state.status = 'failed';
             state.loading = false;
             state.error = action.payload;
